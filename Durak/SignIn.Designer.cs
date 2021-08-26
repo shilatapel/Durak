@@ -87,10 +87,10 @@ namespace Durak
             this.btnSignIn.Image = ((System.Drawing.Image)(resources.GetObject("btnSignIn.Image")));
             this.btnSignIn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSignIn.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.btnSignIn.Location = new System.Drawing.Point(387, 347);
+            this.btnSignIn.Location = new System.Drawing.Point(269, 337);
             this.btnSignIn.Margin = new System.Windows.Forms.Padding(2);
             this.btnSignIn.Name = "btnSignIn";
-            this.btnSignIn.Size = new System.Drawing.Size(173, 59);
+            this.btnSignIn.Size = new System.Drawing.Size(178, 59);
             this.btnSignIn.TabIndex = 4;
             this.btnSignIn.Text = "Login    ";
             this.btnSignIn.UseVisualStyleBackColor = false;
@@ -102,7 +102,7 @@ namespace Durak
             this.radioBtnFemale.BackColor = System.Drawing.Color.Transparent;
             this.radioBtnFemale.Cursor = System.Windows.Forms.Cursors.Hand;
             this.radioBtnFemale.Image = ((System.Drawing.Image)(resources.GetObject("radioBtnFemale.Image")));
-            this.radioBtnFemale.Location = new System.Drawing.Point(236, 220);
+            this.radioBtnFemale.Location = new System.Drawing.Point(232, 220);
             this.radioBtnFemale.Name = "radioBtnFemale";
             this.radioBtnFemale.Size = new System.Drawing.Size(94, 80);
             this.radioBtnFemale.TabIndex = 7;

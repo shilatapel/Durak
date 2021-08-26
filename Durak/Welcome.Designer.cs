@@ -40,9 +40,9 @@
             this.prgBar.BackColor = System.Drawing.Color.White;
             this.prgBar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.prgBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.prgBar.Location = new System.Drawing.Point(0, 474);
+            this.prgBar.Location = new System.Drawing.Point(0, 464);
             this.prgBar.Name = "prgBar";
-            this.prgBar.Size = new System.Drawing.Size(750, 26);
+            this.prgBar.Size = new System.Drawing.Size(750, 36);
             this.prgBar.TabIndex = 0;
             this.prgBar.UseWaitCursor = true;
             // 
@@ -56,7 +56,7 @@
             this.lbl1.BackColor = System.Drawing.Color.Black;
             this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl1.ForeColor = System.Drawing.Color.Red;
-            this.lbl1.Location = new System.Drawing.Point(1, 448);
+            this.lbl1.Location = new System.Drawing.Point(12, 472);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(66, 24);
             this.lbl1.TabIndex = 1;
@@ -66,9 +66,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(750, 500);
             this.Controls.Add(this.lbl1);
             this.Controls.Add(this.prgBar);
