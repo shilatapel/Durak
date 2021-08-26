@@ -56,7 +56,7 @@
             this.lbl1.BackColor = System.Drawing.Color.Black;
             this.lbl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl1.ForeColor = System.Drawing.Color.Red;
-            this.lbl1.Location = new System.Drawing.Point(2, 399);
+            this.lbl1.Location = new System.Drawing.Point(1, 448);
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(66, 24);
             this.lbl1.TabIndex = 1;
