@@ -1,0 +1,11 @@
+C:\Users\TOSHIBA\Desktop\Durak\Durak\bin\Debug\Durak.exe.config
+C:\Users\TOSHIBA\Desktop\Durak\Durak\bin\Debug\Durak.exe
+C:\Users\TOSHIBA\Desktop\Durak\Durak\bin\Debug\Durak.pdb
+C:\Users\TOSHIBA\Desktop\Durak\Durak\obj\Debug\Durak.csproj.AssemblyReference.cache
+C:\Users\TOSHIBA\Desktop\Durak\Durak\obj\Debug\Durak.Properties.Resources.resources
+C:\Users\TOSHIBA\Desktop\Durak\Durak\obj\Debug\Durak.csproj.GenerateResource.cache
+C:\Users\TOSHIBA\Desktop\Durak\Durak\obj\Debug\Durak.csproj.CoreCompileInputs.cache
+C:\Users\TOSHIBA\Desktop\Durak\Durak\obj\Debug\Durak.exe
+C:\Users\TOSHIBA\Desktop\Durak\Durak\obj\Debug\Durak.pdb
+C:\Users\TOSHIBA\Desktop\Durak\Durak\obj\Debug\Durak.Welcome.resources
+C:\Users\TOSHIBA\Desktop\Durak\Durak\obj\Debug\Durak.SignIn.resources

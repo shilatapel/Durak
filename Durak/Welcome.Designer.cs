@@ -40,9 +40,9 @@
             this.prgBar.BackColor = System.Drawing.Color.White;
             this.prgBar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.prgBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.prgBar.Location = new System.Drawing.Point(0, 424);
+            this.prgBar.Location = new System.Drawing.Point(0, 474);
             this.prgBar.Name = "prgBar";
-            this.prgBar.Size = new System.Drawing.Size(550, 26);
+            this.prgBar.Size = new System.Drawing.Size(750, 26);
             this.prgBar.TabIndex = 0;
             this.prgBar.UseWaitCursor = true;
             // 
@@ -66,10 +66,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(550, 450);
+            this.ClientSize = new System.Drawing.Size(750, 500);
             this.Controls.Add(this.lbl1);
             this.Controls.Add(this.prgBar);
             this.DoubleBuffered = true;

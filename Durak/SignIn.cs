@@ -19,7 +19,15 @@ namespace Durak
 
         private void SignIn_Load(object sender, EventArgs e)
         {
-            this.AcceptButton = btnSignIn;
+            // this.AcceptButton = btnSignIn;
+
+            Welcome W = new Welcome();
+            if (W.ShowDialog(this) == DialogResult.OK)
+            {
+
+
+
+            }
         }
         private void btnSignIn_Click(object sender, EventArgs e)
         {
@@ -33,7 +41,14 @@ namespace Durak
                     logIn.imgProfile = "male";
             }
             else
-                MessageBox.Show("Invalid Nick Name or profile picture Please try Again");
+                MessageBox.Show("Invalid Nick Name or profile picture Please try Again","ERROR",MessageBoxButtons.OK);
+        }
+         protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to Exit?", "DURAK APP", MessageBoxButtons.YesNo) == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
