@@ -20,3 +20,14 @@ C:\Users\Женя\Source\Repos\Durak\Durak\obj\Debug\Durak.csproj.GenerateResour
 C:\Users\Женя\Source\Repos\Durak\Durak\obj\Debug\Durak.csproj.CoreCompileInputs.cache
 C:\Users\Женя\Source\Repos\Durak\Durak\obj\Debug\Durak.exe
 C:\Users\Женя\Source\Repos\Durak\Durak\obj\Debug\Durak.pdb
+C:\Users\TOSHIBA\Source\Repos\shilatapel\Durak\Durak\bin\Debug\Durak.exe.config
+C:\Users\TOSHIBA\Source\Repos\shilatapel\Durak\Durak\bin\Debug\Durak.exe
+C:\Users\TOSHIBA\Source\Repos\shilatapel\Durak\Durak\bin\Debug\Durak.pdb
+C:\Users\TOSHIBA\Source\Repos\shilatapel\Durak\Durak\obj\Debug\Durak.csproj.AssemblyReference.cache
+C:\Users\TOSHIBA\Source\Repos\shilatapel\Durak\Durak\obj\Debug\Durak.Properties.Resources.resources
+C:\Users\TOSHIBA\Source\Repos\shilatapel\Durak\Durak\obj\Debug\Durak.SignIn.resources
+C:\Users\TOSHIBA\Source\Repos\shilatapel\Durak\Durak\obj\Debug\Durak.Welcome.resources
+C:\Users\TOSHIBA\Source\Repos\shilatapel\Durak\Durak\obj\Debug\Durak.csproj.GenerateResource.cache
+C:\Users\TOSHIBA\Source\Repos\shilatapel\Durak\Durak\obj\Debug\Durak.csproj.CoreCompileInputs.cache
+C:\Users\TOSHIBA\Source\Repos\shilatapel\Durak\Durak\obj\Debug\Durak.exe
+C:\Users\TOSHIBA\Source\Repos\shilatapel\Durak\Durak\obj\Debug\Durak.pdb
