@@ -12,6 +12,7 @@ namespace Durak
 {
     public partial class SignIn : Form
     {
+        bool flag = false;
         public SignIn()
         {
             InitializeComponent();
@@ -22,15 +23,17 @@ namespace Durak
             // this.AcceptButton = btnSignIn;
 
             Welcome W = new Welcome();
+
             if (W.ShowDialog(this) == DialogResult.OK)
             {
-
+                Menu M = new Menu();
 
 
             }
         }
         private void btnSignIn_Click(object sender, EventArgs e)
         {
+            
             if (txtName.Text != string.Empty&& (radioBtnFemale.Checked||radioBtnMale.Checked) )
             {
                 this.DialogResult = DialogResult.OK;
