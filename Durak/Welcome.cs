@@ -30,17 +30,17 @@ namespace Durak
             prgBar.Increment(1);
             if (prgBar.Value <= 35)
             {
-                lbl1.Text = "Initializing...........";
+                prgBar.CustomText = "Initializing...........";
 
             }
             else if (prgBar.Value <= 55)
             {
-                lbl1.Text = "Loading .......";
+                prgBar.CustomText = "Loading .......";
 
             }
             else if (prgBar.Value <= 80)
             {
-                lbl1.Text = "Getting Ready To Use...";
+                prgBar.CustomText = "Getting Ready To Use...";
 
             }
             else
@@ -55,5 +55,6 @@ namespace Durak
 
             }
         }
+
     }
 }

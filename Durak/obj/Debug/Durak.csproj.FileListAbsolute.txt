@@ -9,3 +9,14 @@ C:\Users\TOSHIBA\Desktop\Durak\Durak\obj\Debug\Durak.exe
 C:\Users\TOSHIBA\Desktop\Durak\Durak\obj\Debug\Durak.pdb
 C:\Users\TOSHIBA\Desktop\Durak\Durak\obj\Debug\Durak.Welcome.resources
 C:\Users\TOSHIBA\Desktop\Durak\Durak\obj\Debug\Durak.SignIn.resources
+C:\Users\Женя\Source\Repos\Durak\Durak\bin\Debug\Durak.exe.config
+C:\Users\Женя\Source\Repos\Durak\Durak\bin\Debug\Durak.exe
+C:\Users\Женя\Source\Repos\Durak\Durak\bin\Debug\Durak.pdb
+C:\Users\Женя\Source\Repos\Durak\Durak\obj\Debug\Durak.csproj.AssemblyReference.cache
+C:\Users\Женя\Source\Repos\Durak\Durak\obj\Debug\Durak.Properties.Resources.resources
+C:\Users\Женя\Source\Repos\Durak\Durak\obj\Debug\Durak.SignIn.resources
+C:\Users\Женя\Source\Repos\Durak\Durak\obj\Debug\Durak.Welcome.resources
+C:\Users\Женя\Source\Repos\Durak\Durak\obj\Debug\Durak.csproj.GenerateResource.cache
+C:\Users\Женя\Source\Repos\Durak\Durak\obj\Debug\Durak.csproj.CoreCompileInputs.cache
+C:\Users\Женя\Source\Repos\Durak\Durak\obj\Debug\Durak.exe
+C:\Users\Женя\Source\Repos\Durak\Durak\obj\Debug\Durak.pdb
