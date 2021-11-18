@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Durak
@@ -15,19 +8,41 @@ namespace Durak
         public Menu()
         {
             InitializeComponent();
-        }
+            DealCards deal = new DealCards();
+            deal.setUpDeck();
+            deal.getHand();
+            
+            string a = "";
+            foreach(var item in deal.PlayerHand)
+            {
+                a += item.Cvalue + " " + item.Csuit + "\n";
+            }
+            label1.Text = a + "\n============\n";
+            string b = "";
+            foreach(var item in deal.ComputerHand)
+            {
+                b += item.Cvalue + " " + item.Csuit + "\n";
+            }
+            label2.Text = b + "\n============\n";
+            deal.sortHand();
+            foreach(var item in deal.SortedPlayerHand)
+            {
+                label1.Text += item.Cvalue + " " + item.Csuit + "\n";
+            }
+            foreach(var item in deal.SortedComputerHand)
+            {
+                label2.Text += item.Cvalue + " " + item.Csuit + "\n";
+            }
 
+        }
         private void Menu_Load(object sender, EventArgs e)
         {
-            this.FormClosed += Menu_FormClosed;
             toolStripTextBoxHi.Text = "hi" + logIn.NickName;
-
         }
 
-        private void Menu_FormClosed(object sender, FormClosedEventArgs e)
+        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Application.Exit();
         }
-
-
     }
 }
