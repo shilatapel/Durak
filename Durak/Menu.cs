@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Durak
@@ -26,11 +27,17 @@ namespace Durak
             {
                 label1.Text += item.Cvalue + " " + item.Csuit + "\n";
             }
+            label1.Text += "Count of cards are " + dealCards.SortedPlayerHand.Count().ToString();
             foreach(var item in dealCards.SortedComputerHand)
             {
                 label2.Text += item.Cvalue + " " + item.Csuit + "\n";
             }
-
+            label2.Text += "Count of cards are " + dealCards.SortedComputerHand.Count().ToString();
+            foreach(var item in dealCards.GetDeck)
+            {
+                label3.Text += item.Cvalue + " " + item.Csuit + "\n";
+            }
+            label3.Text += "Count of cards in the deck " + dealCards.GetDeck.Count().ToString() + "\ntrump is " + dealCards.GetTrump.Cvalue + " " + dealCards.Csuit;
         }
 
         private void Menu_Load(object sender, EventArgs e)

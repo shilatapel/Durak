@@ -1,6 +1,6 @@
 ﻿namespace Durak
 {
-    internal class Card
+    class Card
     {
         public enum SUIT
         {
