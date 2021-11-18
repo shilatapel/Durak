@@ -39,11 +39,10 @@ namespace Durak
             this.SettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ScoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.flpAI = new System.Windows.Forms.FlowLayoutPanel();
-            this.flpCenter = new System.Windows.Forms.FlowLayoutPanel();
-            this.flpPlayer = new System.Windows.Forms.FlowLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LoadGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.NewGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SaveGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripTextBoxHi = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -156,27 +155,26 @@ namespace Durak
             // 
             // flpAI
             // 
-            this.flpAI.BackColor = System.Drawing.Color.Transparent;
-            this.flpAI.Location = new System.Drawing.Point(180, 50);
-            this.flpAI.Name = "flpAI";
-            this.flpAI.Size = new System.Drawing.Size(640, 150);
-            this.flpAI.TabIndex = 1;
+            this.LoadGameToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.LoadGameToolStripMenuItem.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoadGameToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.LoadGameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(2);
+            this.LoadGameToolStripMenuItem.Name = "LoadGameToolStripMenuItem";
+            this.LoadGameToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.LoadGameToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.LoadGameToolStripMenuItem.Text = "Load";
             // 
-            // flpCenter
+            // NewGameToolStripMenuItem
             // 
-            this.flpCenter.BackColor = System.Drawing.Color.Transparent;
-            this.flpCenter.Location = new System.Drawing.Point(180, 206);
-            this.flpCenter.Name = "flpCenter";
-            this.flpCenter.Size = new System.Drawing.Size(640, 282);
-            this.flpCenter.TabIndex = 2;
-            // 
-            // flpPlayer
-            // 
-            this.flpPlayer.BackColor = System.Drawing.Color.Transparent;
-            this.flpPlayer.Location = new System.Drawing.Point(180, 494);
-            this.flpPlayer.Name = "flpPlayer";
-            this.flpPlayer.Size = new System.Drawing.Size(640, 150);
-            this.flpPlayer.TabIndex = 3;
+            this.NewGameToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.NewGameToolStripMenuItem.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NewGameToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.NewGameToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.NewGameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(2);
+            this.NewGameToolStripMenuItem.Name = "NewGameToolStripMenuItem";
+            this.NewGameToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.NewGameToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.NewGameToolStripMenuItem.Text = "New";
             // 
             // label1
             // 
@@ -234,10 +232,6 @@ namespace Durak
         private System.Windows.Forms.ToolStripMenuItem NewGameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem LoadGameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SaveGameToolStripMenuItem;
-        private System.Windows.Forms.FlowLayoutPanel flpAI;
-        private System.Windows.Forms.FlowLayoutPanel flpCenter;
-        private System.Windows.Forms.FlowLayoutPanel flpPlayer;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripTextBoxHi;
     }
 }
