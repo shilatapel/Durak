@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Durak
@@ -16,18 +9,14 @@ namespace Durak
         {
             InitializeComponent();
         }
-
         private void Menu_Load(object sender, EventArgs e)
         {
-            this.FormClosed += Menu_FormClosed;
             toolStripTextBoxHi.Text = "hi" + logIn.NickName;
-
         }
 
-        private void Menu_FormClosed(object sender, FormClosedEventArgs e)
+        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Application.Exit();
         }
-
-
     }
 }
