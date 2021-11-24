@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Durak
+﻿namespace Durak
 {
-    class logIn
+    internal class logIn
     {
-        public static String NickName { get; set; }
-        public static String imgProfile { get; set; }
+        public static string NickName { get; set; }
+        public static string imgProfile { get; set; }
     }
 }

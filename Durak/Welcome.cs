@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Durak
@@ -31,30 +24,24 @@ namespace Durak
             if (prgBar.Value <= 35)
             {
                 prgBar.CustomText = "Initializing...........";
-
             }
             else if (prgBar.Value <= 55)
             {
                 prgBar.CustomText = "Loading .......";
-
             }
             else if (prgBar.Value <= 80)
             {
                 prgBar.CustomText = "Getting Ready To Use...";
-
             }
             else
             {
                 if (prgBar.Value == 100)
                 {
-
                     timer1.Enabled = false;
                     prgBar.Visible = false;
-                    this.DialogResult = DialogResult.OK;
+                    DialogResult = DialogResult.OK;
                 }
-
             }
         }
-
     }
 }

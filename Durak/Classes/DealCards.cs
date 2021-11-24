@@ -1,89 +1,64 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Durak
+namespace Durak.Classes
 {
-    class DealCards : DeckOfCards
+    internal class DealCards : DeckOfCards
     {
-        private List<Card> playerHand;
-        private List<Card> computerHand;
-        private List<Card> sortedPlayerHand;
-        private List<Card> sortedComputerHand;
+        private List<Card> _computerHand;
+        private List<Card> _playerHand;
+
+        public List<Card> Deck;
 
         public DealCards()
         {
-            playerHand = new List<Card>(6);
-            sortedPlayerHand = new List<Card>(6);
-            computerHand = new List<Card>(6);
-            sortedComputerHand = new List<Card>(6);
+            _playerHand = new List<Card>(6);
+            _computerHand = new List<Card>(6);
+            SortedPlayerHand = new List<Card>(6);
+            SortedComputerHand = new List<Card>(6);
         }
 
-        public List<Card> PlayerHand { get => playerHand; set => playerHand = value; }
-        public List<Card> ComputerHand { get => computerHand; set => computerHand = value; }
-        public List<Card> SortedPlayerHand { get => sortedPlayerHand; set => sortedPlayerHand = value; }
-        public List<Card> SortedComputerHand { get => sortedComputerHand; set => sortedComputerHand = value; }
+        public List<Card> SortedPlayerHand { get; }
+
+        public List<Card> SortedComputerHand { get; }
 
         public void Deal()
         {
-            setUpDeck();  //create the deck of cards and shuffle them
-            getHand();  // deal hands to player and comuter
-            sortHand(); // sort hands by value
-            //displayCards();
+            SetUpDeck(); //create the deck of cards and shuffle them
+            GetHand(); // deal hands to player and computer
+            SortHand(); // sort hands by value
         }
 
-        public void getHand()
+
+        private void GetHand()
         {
-            //6 cards for player
-            for(int i = 0; i < 6; i++)
+            //6 cards for player and for ai
+            for (var i = 0; i < 6; i++)
             {
-                playerHand.Add(GetDeck.First());
+                _playerHand.Add(GetDeck.First());
                 GetDeck.RemoveAt(0);
+                //_computerHand.Add(GetDeck.First());
+                //GetDeck.RemoveAt(0);
             }
-
-            //6 cards for computer
-            for(int i = 0; i < 6; i++)
-            {
-                computerHand.Add(GetDeck.First());     //  index of computer hand start from 0
-                GetDeck.RemoveAt(0);
-            }
-
+            Deck = new List<Card>();
+            foreach (var card in GetDeck) Deck.Add(card);
         }
 
-        public void sortHand()
+        private void SortHand()
         {
-            //var queryPlayer = from hand in playerHand
-            //                  orderby hand.Cvalue
-            //                  select hand;
-
-            var queryPlayer = playerHand.GroupBy(x => x.Csuit).Select(x => new
+            var queryPlayer = _playerHand.GroupBy(x => x.Csuit).Select(x => new
             {
                 card = x.OrderBy(c => c.Cvalue),
                 suit = x.Key
             }).OrderBy(x => x.suit).SelectMany(x => x.card);
 
-            //var queryComputer = from hand in computerHand
-            //                    orderby hand.Cvalue
-            //                    select hand;
-
-            var queryComputer = computerHand.GroupBy(x => x.Csuit).Select(x => new
+            var queryComputer = _computerHand.GroupBy(x => x.Csuit).Select(x => new
             {
                 card = x.OrderBy(c => c.Cvalue),
                 suit = x.Key
             }).OrderBy(x => x.suit).SelectMany(x => x.card);
-            foreach(var e in queryPlayer.ToList())
-            {
-                sortedPlayerHand.Add(e);
-            }
-            foreach(var e in queryComputer.ToList())
-            {
-                sortedComputerHand.Add(e);
-            }
+            foreach (var e in queryPlayer.ToList()) SortedPlayerHand.Add(e);
+            foreach (var e in queryComputer.ToList()) SortedComputerHand.Add(e);
         }
-
-        public void SetRiver()
-        {
-        }
-
-        // public void displayCards() {
     }
 }

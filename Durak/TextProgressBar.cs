@@ -17,16 +17,27 @@ namespace Durak
 
     public class TextProgressBar : ProgressBar
     {
-        [Description("Font of the text on ProgressBar"), Category("Additional Options")]
+        private SolidBrush _progressColourBrush = (SolidBrush) Brushes.LightGreen;
+
+        private string _text = string.Empty;
+        private SolidBrush _textColourBrush = (SolidBrush) Brushes.Black;
+
+        private ProgressBarDisplayMode _visualMode = ProgressBarDisplayMode.CurrProgress;
+
+        public TextProgressBar()
+        {
+            Value = Minimum;
+            FixComponentBlinking();
+        }
+
+        [Description("Font of the text on ProgressBar")]
+        [Category("Additional Options")]
         public Font TextFont { get; set; }
-        private SolidBrush _textColourBrush = (SolidBrush)Brushes.Black;
+
         [Category("Additional Options")]
         public Color TextColor
         {
-            get
-            {
-                return _textColourBrush.Color;
-            }
+            get => _textColourBrush.Color;
             set
             {
                 _textColourBrush.Dispose();
@@ -34,14 +45,12 @@ namespace Durak
             }
         }
 
-        private SolidBrush _progressColourBrush = (SolidBrush)Brushes.LightGreen;
-        [Category("Additional Options"), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        [Category("Additional Options")]
+        [Browsable(true)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
         public Color ProgressColor
         {
-            get
-            {
-                return _progressColourBrush.Color;
-            }
+            get => _progressColourBrush.Color;
             set
             {
                 _progressColourBrush.Dispose();
@@ -49,34 +58,29 @@ namespace Durak
             }
         }
 
-        private ProgressBarDisplayMode _visualMode = ProgressBarDisplayMode.CurrProgress;
-        [Category("Additional Options"), Browsable(true)]
+        [Category("Additional Options")]
+        [Browsable(true)]
         public ProgressBarDisplayMode VisualMode
         {
-            get
-            {
-                return _visualMode;
-            }
+            get => _visualMode;
             set
             {
                 _visualMode = value;
-                Invalidate();//redraw component after change value from VS Properties section
+                Invalidate(); //redraw component after change value from VS Properties section
             }
         }
 
-        private string _text = string.Empty;
-
-        [Description("If it's empty, % will be shown"), Category("Additional Options"), Browsable(true), EditorBrowsable(EditorBrowsableState.Always)]
+        [Description("If it's empty, % will be shown")]
+        [Category("Additional Options")]
+        [Browsable(true)]
+        [EditorBrowsable(EditorBrowsableState.Always)]
         public string CustomText
         {
-            get
-            {
-                return _text;
-            }
+            get => _text;
             set
             {
                 _text = value;
-                Invalidate();//redraw component after change value from VS Properties section
+                Invalidate(); //redraw component after change value from VS Properties section
             }
         }
 
@@ -84,20 +88,20 @@ namespace Durak
         {
             get
             {
-                string text = CustomText;
+                var text = CustomText;
 
-                switch(VisualMode)
+                switch (VisualMode)
                 {
-                    case (ProgressBarDisplayMode.Percentage):
+                    case ProgressBarDisplayMode.Percentage:
                         text = _percentageStr;
                         break;
-                    case (ProgressBarDisplayMode.CurrProgress):
+                    case ProgressBarDisplayMode.CurrProgress:
                         text = _currProgressStr;
                         break;
-                    case (ProgressBarDisplayMode.TextAndCurrProgress):
+                    case ProgressBarDisplayMode.TextAndCurrProgress:
                         text = $"{CustomText}: {_currProgressStr}";
                         break;
-                    case (ProgressBarDisplayMode.TextAndPercentage):
+                    case ProgressBarDisplayMode.TextAndPercentage:
                         text = $"{CustomText}: {_percentageStr}";
                         break;
                 }
@@ -107,30 +111,19 @@ namespace Durak
             set { }
         }
 
-        private string _percentageStr { get { return $"{(int)((float)Value - Minimum) / ((float)Maximum - Minimum) * 100 } %"; } }
+        private string _percentageStr => $"{(int) ((float) Value - Minimum) / ((float) Maximum - Minimum) * 100} %";
 
-        private string _currProgressStr
-        {
-            get
-            {
-                return $"{Value}/{Maximum}";
-            }
-        }
-
-        public TextProgressBar()
-        {
-            Value = Minimum;
-            FixComponentBlinking();
-        }
+        private string _currProgressStr => $"{Value}/{Maximum}";
 
         private void FixComponentBlinking()
         {
-            SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
+            SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer,
+                true);
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            Graphics g = e.Graphics;
+            var g = e.Graphics;
 
             DrawProgressBar(g);
 
@@ -139,15 +132,16 @@ namespace Durak
 
         private void DrawProgressBar(Graphics g)
         {
-            Rectangle rect = ClientRectangle;
+            var rect = ClientRectangle;
 
             ProgressBarRenderer.DrawHorizontalBar(g, rect);
 
             rect.Inflate(-3, -3);
 
-            if(Value > 0)
+            if (Value > 0)
             {
-                Rectangle clip = new Rectangle(rect.X, rect.Y, (int)Math.Round(((float)Value / Maximum) * rect.Width), rect.Height);
+                var clip = new Rectangle(rect.X, rect.Y, (int) Math.Round((float) Value / Maximum * rect.Width),
+                    rect.Height);
 
                 g.FillRectangle(_progressColourBrush, clip);
             }
@@ -155,16 +149,15 @@ namespace Durak
 
         private void DrawStringIfNeeded(Graphics g)
         {
-            if(VisualMode != ProgressBarDisplayMode.NoText)
+            if (VisualMode != ProgressBarDisplayMode.NoText)
             {
+                var text = _textToDraw;
 
-                string text = _textToDraw;
+                var len = g.MeasureString(text, TextFont);
 
-                SizeF len = g.MeasureString(text, TextFont);
+                var location = new Point(Width / 2 - (int) len.Width / 2, Height / 2 - (int) len.Height / 2);
 
-                Point location = new Point(((Width / 2) - (int)len.Width / 2), ((Height / 2) - (int)len.Height / 2));
-
-                g.DrawString(text, TextFont, (Brush)_textColourBrush, location);
+                g.DrawString(text, TextFont, _textColourBrush, location);
             }
         }
 

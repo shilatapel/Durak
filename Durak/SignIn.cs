@@ -14,9 +14,9 @@ namespace Durak
         {
             // this.AcceptButton = btnSignIn;
 
-            Welcome W = new Welcome();
+            var W = new Welcome();
 
-            if(W.ShowDialog(this) == DialogResult.OK)
+            if (W.ShowDialog(this) == DialogResult.OK)
             {
                 //W.Close();
             }
@@ -24,33 +24,32 @@ namespace Durak
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            if(txtName.Text != string.Empty && (radioBtnFemale.Checked || radioBtnMale.Checked))
+            if (txtName.Text != string.Empty && (radioBtnFemale.Checked || radioBtnMale.Checked))
             {
-                this.DialogResult = DialogResult.OK;
+                DialogResult = DialogResult.OK;
                 logIn.NickName = txtName.Text;
-                if(radioBtnFemale.Checked)
+                if (radioBtnFemale.Checked)
                     logIn.imgProfile = "female";
                 else
                     logIn.imgProfile = "male";
-                
-                this.Visible = false;
-                Menu M = new Menu();
+
+                Visible = false;
+                var M = new Menu();
                 M.Show();
             }
             else
+            {
                 MessageBox.Show("Invalid Nick Name or profile picture Please try Again", "ERROR", MessageBoxButtons.OK);
+            }
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            if(MessageBox.Show("Are you sure you want to Exit?", "DURAK APP", MessageBoxButtons.YesNo) == DialogResult.No)
-            {
+            if (MessageBox.Show("Are you sure you want to Exit?", "DURAK APP", MessageBoxButtons.YesNo) ==
+                DialogResult.No)
                 e.Cancel = true;
-            }
             else
-            {
                 e.Cancel = false;
-            }
         }
     }
 }

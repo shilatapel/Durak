@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <DisableOutOfProcTaskHost>true</DisableOutOfProcTaskHost>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -22,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DisableOutOfProcTaskHost>true</DisableOutOfProcTaskHost>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DisableOutOfProcTaskHost>true</DisableOutOfProcTaskHost>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -47,9 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Card.cs" />
+    <Compile Include="Classes\CustomCardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Classes\DealCards.cs" />
     <Compile Include="Classes\DeckOfCards.cs" />
-    <Compile Include="Classes\DrawingCards.cs" />
     <Compile Include="logIn.cs" />
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
@@ -110,13 +115,7 @@
     <None Include="Resources\tableskin.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\back1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\back2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\c1.png" />
+    <None Include="Resources\Cards\c14.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Cards\c6.png" />
@@ -143,7 +142,7 @@
     <None Include="Resources\Cards\c13.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\d1.png" />
+    <None Include="Resources\Cards\d14.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Cards\d6.png" />
@@ -170,7 +169,7 @@
     <None Include="Resources\Cards\d13.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\h1.png" />
+    <None Include="Resources\Cards\h14.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Cards\h6.png" />
@@ -197,7 +196,7 @@
     <None Include="Resources\Cards\h13.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\s1.png" />
+    <None Include="Resources\Cards\s14.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Cards\s6.png" />
@@ -222,6 +221,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Cards\s13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Cards\back1.jpg" />
+    <Content Include="Resources\Cards\back2.jpg" />
+    <Content Include="Resources\Cards\back3.jpg" />
+    <Content Include="Resources\Cards\back4.jpg" />
+    <Content Include="Resources\Cards\back5.jpg" />
+    <Content Include="Resources\table1.jpg" />
+    <Content Include="Resources\table2.jpg" />
+    <Content Include="Resources\table3.jpg" />
+    <Content Include="Resources\table4.jpg" />
+    <Content Include="Resources\table5.jpg" />
+    <Content Include="Resources\table6.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

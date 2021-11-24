@@ -1,12 +1,12 @@
-﻿namespace Durak
+﻿namespace Durak.Classes
 {
-    class Card
+    public class Card
     {
         public enum SUIT
         {
             HEARTS,
-            SPADES,
             DIAMONDS,
+            SPADES,
             CLUBS
         }
 
@@ -25,5 +25,16 @@
 
         public SUIT Csuit { get; set; }
         public VALUE Cvalue { get; set; }
+        public bool InHand { get; set; }
+
+        public string GetName()
+        {
+            return Csuit.ToString().Substring(0, 1).ToLower() + ((int) Cvalue);
+        }
+
+        public override string ToString()
+        {
+            return Cvalue + " of " + Csuit.ToString().Substring(0, 1).ToUpper();
+        }
     }
 }
