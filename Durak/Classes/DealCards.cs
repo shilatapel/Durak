@@ -37,8 +37,8 @@ namespace Durak.Classes
             {
                 _playerHand.Add(GetDeck.First());
                 GetDeck.RemoveAt(0);
-                //_computerHand.Add(GetDeck.First());
-                //GetDeck.RemoveAt(0);
+                _computerHand.Add(GetDeck.First());
+                GetDeck.RemoveAt(0);
             }
             Deck = new List<Card>();
             foreach (var card in GetDeck) Deck.Add(card);

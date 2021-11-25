@@ -76,7 +76,7 @@ namespace Durak
                 myCard.Size = new Size(80, 100);
                 myCard.Name = cards[i].GetName();
                 myCard.AutoSizeMode = AutoSizeMode;
-                myCard.Left = i * 80;
+                myCard.Left = i * ((int)((pnlPlayer.Width - 55) / cards.Count));
                 myCard.Card = cards[i];
                 myCard.CardClick += CardClick;
                 pnlPlayer.Controls.Add(myCard);
@@ -92,7 +92,7 @@ namespace Durak
             {
                 var myCard = new CustomCardControl();
                 myCard.Size = new Size(80, 100);
-                myCard.Left = i * 20;
+                myCard.Left = i * ((int)((pnlAi.Width - 55) / cards.Count));
                 pnlAi.Controls.Add(myCard);
             }
         }
