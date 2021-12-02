@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Durak.Classes
 {
-    internal class DealCards : DeckOfCards
+    internal class DealCards : Deck
     {
         private List<Card> _computerHand;
         private List<Card> _playerHand;
