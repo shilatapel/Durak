@@ -13,6 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <DisableOutOfProcTaskHost>true</DisableOutOfProcTaskHost>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -50,11 +51,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Card.cs" />
+    <Compile Include="Classes\Computer.cs" />
     <Compile Include="Classes\CustomCardControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Classes\DealCards.cs" />
-    <Compile Include="Classes\DeckOfCards.cs" />
+    <Compile Include="Classes\Deal.cs" />
+    <Compile Include="Classes\Deck.cs" />
+    <Compile Include="Classes\Player.cs" />
     <Compile Include="logIn.cs" />
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>

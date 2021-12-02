@@ -1,4 +1,6 @@
-﻿namespace Durak.Classes
+﻿using System;
+
+namespace Durak.Classes
 {
     public class Card
     {
@@ -34,7 +36,7 @@
 
         public override string ToString()
         {
-            return Cvalue + " of " + Csuit.ToString().Substring(0, 1).ToUpper();
+            return Cvalue + " of " + Csuit;
         }
     }
 }

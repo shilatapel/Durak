@@ -28,7 +28,6 @@ namespace Durak.Classes
                 UpdateCardImage();
             }
         }
-
         public event EventHandler CardClick;
 
         private void InitializeComponent()
@@ -42,7 +41,8 @@ namespace Durak.Classes
             _cardPictureBox.Size = new Size(100, 150);
             _cardPictureBox.TabIndex = 0;
             _cardPictureBox.TabStop = false;
-            _cardPictureBox.Click += cardPictureBox_Click;
+            //_cardPictureBox.Click += cardPictureBox_Click;
+            _cardPictureBox.DoubleClick += cardPictureBox_Click;;
 
             Controls.Add(_cardPictureBox);
             Name = "CustomCardControl";
@@ -76,5 +76,6 @@ namespace Durak.Classes
         {
             CardClick?.Invoke(this, e);
         }
+        
     }
 }

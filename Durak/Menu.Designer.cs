@@ -46,6 +46,7 @@ namespace Durak
             this.pnlAi = new System.Windows.Forms.Panel();
             this.pnlTrump = new System.Windows.Forms.Panel();
             this.pnlAboveTrump = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,6 +101,7 @@ namespace Durak
             this.NewGameToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.NewGameToolStripMenuItem.Size = new System.Drawing.Size(116, 23);
             this.NewGameToolStripMenuItem.Text = "New";
+            this.NewGameToolStripMenuItem.Click += new System.EventHandler(this.NewGameToolStripMenuItem_Click);
             // 
             // LoadGameToolStripMenuItem
             // 
@@ -198,6 +200,14 @@ namespace Durak
             this.pnlAboveTrump.Size = new System.Drawing.Size(72, 100);
             this.pnlAboveTrump.TabIndex = 9;
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(848, 140);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 291);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "1";
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -206,6 +216,7 @@ namespace Durak
             this.BackgroundImage = global::Durak.Properties.Resources.tableskin;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(984, 671);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlTrump);
             this.Controls.Add(this.pnlAboveTrump);
             this.Controls.Add(this.pnlAi);
@@ -225,6 +236,8 @@ namespace Durak
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Label label1;
 
         private System.Windows.Forms.Panel pnlAboveTrump;
 

@@ -4,18 +4,15 @@ using System.Linq;
 
 namespace Durak.Classes
 {
-    internal class DeckOfCards : Card
+    internal class Deck : Card
     {
         private const int NumOfCards = 36; // number of all cards
-
-        public DeckOfCards()
+        public Card GetTrump { get; private set; }
+        protected List<Card> GetDeck { get; }
+        public Deck()
         {
             GetDeck = new List<Card>(NumOfCards);
         }
-
-        public Card GetTrump { get; private set; }
-        
-        protected List<Card> GetDeck { get; }
 
         protected void SetUpDeck()
         {
