@@ -47,6 +47,10 @@ namespace Durak
             this.pnlTrump = new System.Windows.Forms.Panel();
             this.pnlAboveTrump = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnOtboi = new System.Windows.Forms.Button();
+            this.btnZabirai = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pnlDiscardPile = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -208,6 +212,43 @@ namespace Durak
             this.label1.TabIndex = 10;
             this.label1.Text = "1";
             // 
+            // btnOtboi
+            // 
+            this.btnOtboi.Enabled = false;
+            this.btnOtboi.Location = new System.Drawing.Point(848, 560);
+            this.btnOtboi.Name = "btnOtboi";
+            this.btnOtboi.Size = new System.Drawing.Size(75, 23);
+            this.btnOtboi.TabIndex = 11;
+            this.btnOtboi.Text = "Done";
+            this.btnOtboi.UseVisualStyleBackColor = true;
+            this.btnOtboi.Click += new System.EventHandler(this.btnOtboi_Click);
+            // 
+            // btnZabirai
+            // 
+            this.btnZabirai.Enabled = false;
+            this.btnZabirai.Location = new System.Drawing.Point(848, 612);
+            this.btnZabirai.Name = "btnZabirai";
+            this.btnZabirai.Size = new System.Drawing.Size(75, 23);
+            this.btnZabirai.TabIndex = 12;
+            this.btnZabirai.Text = "Take";
+            this.btnZabirai.UseVisualStyleBackColor = true;
+            this.btnZabirai.Click += new System.EventHandler(this.btnZabirai_Click);
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(848, 50);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 33);
+            this.label2.TabIndex = 13;
+            // 
+            // pnlDiscardPile
+            // 
+            this.pnlDiscardPile.BackColor = System.Drawing.Color.Transparent;
+            this.pnlDiscardPile.Location = new System.Drawing.Point(28, 473);
+            this.pnlDiscardPile.Name = "pnlDiscardPile";
+            this.pnlDiscardPile.Size = new System.Drawing.Size(72, 100);
+            this.pnlDiscardPile.TabIndex = 10;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -216,6 +257,10 @@ namespace Durak
             this.BackgroundImage = global::Durak.Properties.Resources.tableskin;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(984, 671);
+            this.Controls.Add(this.pnlDiscardPile);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnZabirai);
+            this.Controls.Add(this.btnOtboi);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlTrump);
             this.Controls.Add(this.pnlAboveTrump);
@@ -237,10 +282,15 @@ namespace Durak
             this.PerformLayout();
         }
 
+        private System.Windows.Forms.Button btnZabirai;
+        private System.Windows.Forms.Button btnOtboi;
+
+        private System.Windows.Forms.Label label2;
+
         private System.Windows.Forms.Label label1;
 
         private System.Windows.Forms.Panel pnlAboveTrump;
-
+        private System.Windows.Forms.Panel pnlDiscardPile;
         private System.Windows.Forms.Panel pnlTrump;
         private System.Windows.Forms.Panel pnlPlayer;
         private System.Windows.Forms.Panel pnlDeck;

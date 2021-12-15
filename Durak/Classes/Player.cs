@@ -10,6 +10,31 @@ namespace Durak.Classes
         private string Name { get; }
         private List<Card> PlayerCards { get; }
         private bool IsAttacked { get; set; }
+        
+        
+        private bool FalseDefend { get; set; }
+        public bool GetFalseDefend()
+        {
+            return FalseDefend;
+        }
+        public void SetFalseDefend(bool falseDefend)
+        {
+            FalseDefend = falseDefend;
+        }
+        
+        
+        private bool FalseAttack { get; set; }
+        public bool GetFalseAttack()
+        {
+            return FalseAttack;
+        }
+        public void SetFalseAttack(bool value)
+        {
+            FalseAttack = value;
+        }
+
+        
+        
         //constructor with ready hand
         public Player(string name, List<Card> playerCards, bool isAttacked)
         {
@@ -17,7 +42,7 @@ namespace Durak.Classes
             PlayerCards = playerCards;
             IsAttacked = isAttacked;
         }
-
+        
         //create method to add card to player's hand
         public void AddCard(Card card)
         {
@@ -29,7 +54,7 @@ namespace Durak.Classes
             PlayerCards.AddRange(cards);
         }
         //create method to remove card from player's hand
-        public void RemoveCard(Card card)
+        private void RemoveCard(Card card)
         {
             PlayerCards.Remove(card);
         }
@@ -45,23 +70,30 @@ namespace Durak.Classes
         public void Attack(CustomCardControl card, List<Card> riverCards)
         {
             var attackedCard = card.Card;
-            var listOfValues = riverCards.Select(x => x.Cvalue).ToList();
-            if (riverCards.Count == 0)
+            var listOfValues = riverCards.Select(x => x.Cvalue).ToList(); // get list of values from river cards
+            if (riverCards.Count == 0) // if river is empty, not need any checks
             {
-                riverCards.Add(attackedCard);
-                RemoveCard(attackedCard);
+                riverCards.Add(attackedCard); // add attacked card to river
+                RemoveCard(attackedCard); // remove attacked card from player's hand
+                FalseAttack = false; // set falsed attack to false
             }
-            else if (riverCards.Count is > 0 and < 12)
+            else if (riverCards.Count is > 0 and < 12) // if have cards already
             {
-                if (listOfValues.Contains(attackedCard.Cvalue))
+                if (listOfValues.Contains(attackedCard.Cvalue)) // if attacked card is in river
                 {
-                    riverCards.Add(attackedCard);
-                    RemoveCard(attackedCard);
+                    riverCards.Add(attackedCard); // add attacked card to river
+                    RemoveCard(attackedCard); // remove attacked card from player's hand
+                    FalseAttack = false; // set falsed attack to false
                 }
-                
+                else
+                    FalseAttack = true;
             }
+            else
+                FalseAttack = true;
             
         }
+
+        
 
         public void Defend(CustomCardControl card, List<Card> riverCards, Card trumpCard)
         {
@@ -75,13 +107,20 @@ namespace Durak.Classes
             {
                     riverCards.Add(defendCard);
                     RemoveCard(defendCard);
+                    FalseDefend = false;
             }
             // if attacked card is trump and defend card is higher than attacked card
             else if (attackedCard.Csuit == trumpCard.Csuit && attackedCard.Cvalue > defendCard.Cvalue) //
             {
                 riverCards.Add(defendCard);
                 RemoveCard(defendCard);
+                FalseDefend = false;
             }
+            
+            else
+                FalseDefend = true;
         }
+
+        
     }
 }
