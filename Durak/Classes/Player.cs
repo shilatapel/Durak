@@ -77,7 +77,7 @@ namespace Durak.Classes
                 RemoveCard(attackedCard); // remove attacked card from player's hand
                 FalseAttack = false; // set falsed attack to false
             }
-            else if (riverCards.Count is > 0 and < 12) // if have cards already
+            else if (riverCards.Count is > 0 and <= 12) // if have cards already
             {
                 if (listOfValues.Contains(attackedCard.Cvalue)) // if attacked card is in river
                 {
@@ -88,8 +88,6 @@ namespace Durak.Classes
                 else
                     FalseAttack = true;
             }
-            else
-                FalseAttack = true;
             
         }
 
