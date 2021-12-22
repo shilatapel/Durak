@@ -115,9 +115,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\tableskin.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Cards\c14.png" />
   </ItemGroup>
   <ItemGroup>

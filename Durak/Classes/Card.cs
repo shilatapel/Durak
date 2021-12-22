@@ -2,7 +2,8 @@
 
 namespace Durak.Classes
 {
-    public class Card
+    
+    [Serializable] public class Card
     {
         public enum SUIT
         {
