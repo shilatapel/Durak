@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Durak
 {
@@ -272,6 +274,7 @@ namespace Durak
                 {
                     DealCardsToPlayers(playerCards);
                     DealCardsToPlayers(computerCards);
+                   
                     player.SetFalseAttack(false);
                     player.SetIsAttacked(false);
                     computer.SetIsAttacked(true);
@@ -309,12 +312,15 @@ namespace Durak
                 DealCardsToPlayers(playerCards);
                 btnTakeIsPressed = false;
                 playerCards.AddRange(riverCards);
+                //playerCards = sortHand(playerCards);
+               //computerCards = sortHand(computerCards);
                 player.SetFalseDefend(false);
                 computer.SetFalseAttack(false);
                 ClearRiver();
                 computer.Attack(riverCards, trumpCard);
                 MaxThrownCards = 1;
-                btnTake.Enabled = true;
+                btnTake.Enabled = true; 
+             
             }
 
             label1.Text =
@@ -332,6 +338,23 @@ namespace Durak
                     restCards.Add(this.restCards[0]);
                     this.restCards.RemoveAt(0);
                 }
+
+                //restCards = sortHand(restCards);
+            }
+         
+
+            List<Card> sortHand(List<Card> cardsHand)
+            {
+                List<Card> sortHandCards = new List<Card>();
+                var queryCardsHand = cardsHand.GroupBy(x => x.Csuit).Select(x => new
+                {
+                    card = x.OrderBy(c => c.Cvalue),
+                    suit = x.Key
+                }).OrderBy(x => x.suit).SelectMany(x => x.card);
+                foreach (var e in queryCardsHand.ToList()) sortHandCards.Add(e);
+
+
+                return sortHandCards;
             }
         }
 
@@ -498,5 +521,93 @@ namespace Durak
                 pnlDeck.Controls.Add(myCard);
             }
         }
+
+        private void SaveGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {        
+
+                    FileStream fs = new FileStream("saveGame.bin", FileMode.Create); //create new binary file to save data
+                    BinaryFormatter bf = new BinaryFormatter();  //pointer that write in binary file
+                    fs.Position = 0; 
+                    bf.Serialize(fs,trumpCard);
+                    bf.Serialize(fs, playerCards);
+                    bf.Serialize(fs, computerCards); 
+                    bf.Serialize(fs,restCards);
+                    bf.Serialize(fs, discardPileCards);
+                    bf.Serialize(fs, riverCards);
+                    bf.Serialize(fs, btnTakeIsPressed);
+                    bf.Serialize(fs, MaxThrownCards);
+                    bf.Serialize(fs, btnTake.Text);
+                    bf.Serialize(fs, computer.GetIsAttacked());
+                    bf.Serialize(fs, player.GetIsAttacked());
+
+                fs.Close();
+                    
+                    MessageBox.Show("GAME SAVED !");
+
+            }
+            catch (Exception err) {
+
+                MessageBox.Show(err.Message);
+            }
+
+        }
+
+        private void LoadGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                bool computerisAttcked;
+                bool playerisAttcked;
+                //List<Card> check = new List<Card>();    //only for test
+                FileStream fs = new FileStream("saveGame.bin", FileMode.Open); //open file to read 
+                BinaryFormatter bf = new BinaryFormatter();  //pointer that read from binary file
+                //check = (List<Card>)bf.Deserialize(fs);
+                trumpCard= (Card)bf.Deserialize(fs);
+                playerCards=(List<Card>)bf.Deserialize(fs);
+                computerCards = (List<Card>)bf.Deserialize(fs);
+                restCards = (List<Card>)bf.Deserialize(fs);
+                discardPileCards = (List<Card>)bf.Deserialize(fs);
+                riverCards = (List<Card>)bf.Deserialize(fs); 
+                btnTakeIsPressed =  (bool)bf.Deserialize(fs);
+                MaxThrownCards = (int)bf.Deserialize(fs);
+                btnTake.Text = (string)bf.Deserialize(fs);
+                computerisAttcked = (bool)bf.Deserialize(fs);
+                playerisAttcked = (bool)bf.Deserialize(fs);
+
+                fs.Close();
+                    //foreach (Card x in v)   test that is save
+                //MessageBox.Show(x.ToString());
+
+                ClearPanels();
+                computer.SetIsAttacked(computerisAttcked);
+                player.SetIsAttacked(playerisAttcked);
+                player = new Player("Player", playerCards, player.GetIsAttacked());
+                computer = new Computer("Ai", computerCards, computer.GetIsAttacked()); // class Computer not class Player 
+
+                if (computer.GetIsAttacked())
+                {
+                    computer.Attack(riverCards, trumpCard);
+                    btnTake.Enabled = true;
+                    MaxThrownCards++;
+                }
+
+                ShowAllCards();
+                MessageBox.Show("THE LAST SAVED GAME SUCCESFULLY LOADE!");
+            }
+          
+
+            catch (Exception err)
+            {
+
+                MessageBox.Show(err.Message);
+            }
+
+        }
     }
 }
+
+
+
+

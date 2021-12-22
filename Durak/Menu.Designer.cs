@@ -128,6 +128,7 @@ namespace Durak
             this.LoadGameToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.LoadGameToolStripMenuItem.Size = new System.Drawing.Size(116, 23);
             this.LoadGameToolStripMenuItem.Text = "Load";
+            this.LoadGameToolStripMenuItem.Click += new System.EventHandler(this.LoadGameToolStripMenuItem_Click);
             // 
             // SaveGameToolStripMenuItem
             // 
@@ -141,6 +142,7 @@ namespace Durak
             this.SaveGameToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
             this.SaveGameToolStripMenuItem.Size = new System.Drawing.Size(116, 23);
             this.SaveGameToolStripMenuItem.Text = "Save";
+            this.SaveGameToolStripMenuItem.Click += new System.EventHandler(this.SaveGameToolStripMenuItem_Click);
             // 
             // SettingsToolStripMenuItem
             // 
