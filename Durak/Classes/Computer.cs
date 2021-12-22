@@ -78,7 +78,7 @@ namespace Durak.Classes
                 if (ComputerCards.Any(x => x.Csuit != trump.Csuit))
                 {
                     // TODO: change logic of throwing first card
-                    var cardToAttack = ComputerCards.FirstOrDefault(x => x.Csuit != trump.Csuit);
+                    var cardToAttack = ComputerCards.First(x => x.Csuit != trump.Csuit);
                     riverCards.Add(cardToAttack);
                     RemoveCard(cardToAttack);
                     FalseAttack = false;
@@ -102,7 +102,7 @@ namespace Durak.Classes
                     // making list of computer's cards that there are not trump and also with the same values like on the table
                     if (intersectList.Count > 0) // if list not empty, it means that we have cards to attack
                     {
-                        var cardToAttack = ComputerCards.First(x => x.Cvalue == intersectList.First()); // get first card from list to attack
+                        var cardToAttack = ComputerCards.First(x => x.Cvalue == intersectList.First() && x.Csuit != trump.Csuit); // get first card from list to attack
                         riverCards.Add(cardToAttack); // add card to river
                         RemoveCard(cardToAttack); // remove card from computer's hand
                         FalseAttack = false; // set FalseAttack to false

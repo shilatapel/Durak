@@ -8,7 +8,7 @@ namespace Durak.Classes
     {
         //create properties
         private string Name { get; }
-        private List<Card> PlayerCards { get; }
+        private List<Card> PlayerCards { get; set; }
         private bool IsAttacked { get; set; }
         
         
@@ -90,6 +90,8 @@ namespace Durak.Classes
             }
             
         }
+
+        
 
         
 
