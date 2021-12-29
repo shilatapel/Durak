@@ -632,7 +632,9 @@ namespace Durak
 
         private void SaveGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
+            if(!player.GetIsWinner() && !computer.GetIsWinner())
+            {
+                try
             {        
 
                         FileStream fs = new FileStream("saveGame.bin", FileMode.Create); //create new binary file to save data
@@ -669,6 +671,7 @@ namespace Durak
                 
                     
             }
+        
             else
             {
                 MessageBox.Show("You can't save game after game is over");

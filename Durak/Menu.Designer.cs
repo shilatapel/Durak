@@ -145,7 +145,7 @@ namespace Durak
             this.SettingsToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.SettingsToolStripMenuItem.Size = new System.Drawing.Size(91, 23);
             this.SettingsToolStripMenuItem.Text = "Settings ";
-            this.SettingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
+            //this.SettingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
             // 
             // ScoreToolStripMenuItem
             // 
@@ -156,7 +156,7 @@ namespace Durak
             this.ScoreToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ScoreToolStripMenuItem.Size = new System.Drawing.Size(180, 23);
             this.ScoreToolStripMenuItem.Text = "Score and Statistics";
-            this.ScoreToolStripMenuItem.Click += new System.EventHandler(this.ScoreToolStripMenuItem_Click);
+           // this.ScoreToolStripMenuItem.Click += new System.EventHandler(this.ScoreToolStripMenuItem_Click);
             // 
             // HelpToolStripMenuItem
             // 
@@ -167,7 +167,7 @@ namespace Durak
             this.HelpToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.HelpToolStripMenuItem.Size = new System.Drawing.Size(59, 23);
             this.HelpToolStripMenuItem.Text = "Help";
-            this.HelpToolStripMenuItem.Click += new System.EventHandler(this.HelpToolStripMenuItem_Click);
+           // this.HelpToolStripMenuItem.Click += new System.EventHandler(this.HelpToolStripMenuItem_Click);
             // 
             // pnlPlayer
             // 
