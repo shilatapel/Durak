@@ -632,10 +632,8 @@ namespace Durak
 
         private void SaveGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!player.GetIsWinner() && !computer.GetIsWinner() )
-            {
-                try
-                {        
+            try
+            {        
 
                         FileStream fs = new FileStream("saveGame.bin", FileMode.Create); //create new binary file to save data
                         BinaryFormatter bf = new BinaryFormatter();  //pointer that write in binary file
