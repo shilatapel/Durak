@@ -15,6 +15,15 @@ namespace Durak.Classes
         private List<Card> ComputerCards { get; }
         private bool IsAttacked { get; set; }
         
+        private bool IsWinner { get; set; }
+        public bool GetIsWinner()
+        {
+            return IsWinner;
+        }
+        public void SetIsWinner(bool value)
+        {
+            IsWinner = value;
+        }
         //public int CountOfAttackedCards { get; private set; }
         //getter fo IsAttacked
         public bool GetIsAttacked()

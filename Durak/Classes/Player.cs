@@ -9,17 +9,27 @@ namespace Durak.Classes
         //create properties
         private string Name { get; }
         private List<Card> PlayerCards { get; set; }
+        
+        private bool IsWinner { get; set; }
         private bool IsAttacked { get; set; }
         
         
         private bool FalseDefend { get; set; }
+        public bool GetIsWinner()
+        {
+            return IsWinner;
+        }
+        public void SetIsWinner(bool value)
+        {
+            IsWinner = value;
+        }
         public bool GetFalseDefend()
         {
             return FalseDefend;
         }
-        public void SetFalseDefend(bool falseDefend)
+        public void SetFalseDefend(bool value)
         {
-            FalseDefend = falseDefend;
+            FalseDefend = value;
         }
         
         
@@ -101,16 +111,19 @@ namespace Durak.Classes
             var defendCard = card.Card;
             // if attacked card is not trump and defend card is higher than attacked card or defend card is trump
             if (attackedCard.Csuit != trumpCard.Csuit && 
-                defendCard.Cvalue > attackedCard.Cvalue && 
-                defendCard.Csuit == attackedCard.Csuit || 
-                defendCard.Csuit == trumpCard.Csuit)  
+                defendCard.Csuit == attackedCard.Csuit && 
+                defendCard.Cvalue > attackedCard.Cvalue || 
+                attackedCard.Csuit != trumpCard.Csuit && 
+                defendCard.Csuit == trumpCard.Csuit)
             {
                     riverCards.Add(defendCard);
                     RemoveCard(defendCard);
                     FalseDefend = false;
             }
             // if attacked card is trump and defend card is higher than attacked card
-            else if (attackedCard.Csuit == trumpCard.Csuit && attackedCard.Cvalue > defendCard.Cvalue) //
+            else if (attackedCard.Csuit == trumpCard.Csuit &&
+                     attackedCard.Cvalue < defendCard.Cvalue &&
+                     defendCard.Csuit == trumpCard.Csuit) //
             {
                 riverCards.Add(defendCard);
                 RemoveCard(defendCard);

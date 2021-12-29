@@ -45,115 +45,101 @@ namespace Durak
             MaxThrownCards = 0; // counter of max thrown cards
             btnTakeIsPressed = false; // if the button take is pressed
             btnTake.Text = "Take"; // button take text
+            pnlAboveTrump.Visible = true;
             ClearPanels();
             deal.DealCards();
-
-            //playerCards = deal.SortedPlayerHand;
-            //computerCards = deal.SortedComputerHand;
+            
+            playerCards = deal.SortedPlayerHand;
+            computerCards = deal.SortedComputerHand;
             trumpCard = deal.GetTrump;
             restCards = deal.Deck;
 
             //check
-            trumpCard = new Card()
+            /*trumpCard = new Card()
             {
-                Csuit = Card.SUIT.CLUBS,
-                Cvalue = Card.VALUE.SEVEN
+                Csuit = Card.SUIT.HEARTS,
+                Cvalue = Card.VALUE.SIX
             };
             computerCards = new List<Card>()
             {
                 new Card()
                 {
                     Csuit = Card.SUIT.CLUBS,
-                    Cvalue = Card.VALUE.SEVEN
+                    Cvalue = Card.VALUE.TEN
                 },
                 new Card()
                 {
-                    Csuit = Card.SUIT.HEARTS,
-                    Cvalue = Card.VALUE.SEVEN
+                    Csuit = Card.SUIT.CLUBS,
+                    Cvalue = Card.VALUE.TEN
                 },
                 new Card()
                 {
-                    Csuit = Card.SUIT.SPADES,
-                    Cvalue = Card.VALUE.SEVEN
+                    Csuit = Card.SUIT.CLUBS,
+                    Cvalue = Card.VALUE.KING
                 },
                 new Card()
                 {
-                    Csuit = Card.SUIT.DIAMONDS,
-                    Cvalue = Card.VALUE.SEVEN
+                    Csuit = Card.SUIT.CLUBS,
+                    Cvalue = Card.VALUE.QUEEN
                 },
                 new Card()
                 {
-                    Csuit = Card.SUIT.SPADES,
-                    Cvalue = Card.VALUE.SEVEN
+                    Csuit = Card.SUIT.CLUBS,
+                    Cvalue = Card.VALUE.JACK
                 },
                 new Card()
                 {
-                    Csuit = Card.SUIT.SPADES,
-                    Cvalue = Card.VALUE.SEVEN
-                },
-                new Card()
-                {
-                    Csuit = Card.SUIT.SPADES,
-                    Cvalue = Card.VALUE.SEVEN
-                },
-                new Card()
-                {
-                    Csuit = Card.SUIT.SPADES,
-                    Cvalue = Card.VALUE.SEVEN
-                },
-                new Card()
-                {
-                    Csuit = Card.SUIT.SPADES,
-                    Cvalue = Card.VALUE.SEVEN
+                    Csuit = Card.SUIT.CLUBS,
+                    Cvalue = Card.VALUE.ACE
                 },
             };
             playerCards = new List<Card>()
             {
                 new Card()
                 {
-                    Csuit = Card.SUIT.CLUBS,
-                    Cvalue = Card.VALUE.EIGHT
+                    Csuit = Card.SUIT.HEARTS,
+                    Cvalue = Card.VALUE.TEN
                 },
                 new Card()
                 {
-                    Csuit = Card.SUIT.CLUBS,
-                    Cvalue = Card.VALUE.EIGHT
+                    Csuit = Card.SUIT.HEARTS,
+                    Cvalue = Card.VALUE.TEN
                 },
                 new Card()
                 {
-                    Csuit = Card.SUIT.CLUBS,
-                    Cvalue = Card.VALUE.EIGHT
+                    Csuit = Card.SUIT.HEARTS,
+                    Cvalue = Card.VALUE.KING
                 },
                 new Card()
                 {
-                    Csuit = Card.SUIT.CLUBS,
-                    Cvalue = Card.VALUE.EIGHT
+                    Csuit = Card.SUIT.HEARTS,
+                    Cvalue = Card.VALUE.QUEEN
+                },
+                new Card()
+                {
+                    Csuit = Card.SUIT.HEARTS,
+                    Cvalue = Card.VALUE.JACK
                 },
                 new Card()
                 {
                     Csuit = Card.SUIT.SPADES,
-                    Cvalue = Card.VALUE.EIGHT
+                    Cvalue = Card.VALUE.ACE
                 },
-                new Card()
-                {
-                    Csuit = Card.SUIT.CLUBS,
-                    Cvalue = Card.VALUE.EIGHT
-                },
-            };
-
+            };*/
 
             //real conditions
             var step = FirstStepPlayer(playerCards, computerCards, trumpCard);
             label1.Text = $@" {(step ? "Player " : "Ai")} starts";
-            /*player = new Player("Player", playerCards, step);
+            player = new Player("Player", playerCards, step);
             computer = new Computer("Ai", computerCards, !step); // class Computer not class Player 
-            */
+            
 
 
             //test conditions for testing
-            player = new Player("Player", playerCards, false);
-            computer = new Computer("Player2", computerCards, true); // same class for test
-
+            //player = new Player("Player", playerCards, false);
+            //computer = new Computer("Player2", computerCards, true); // same class for test
+            player.SetIsWinner(false);
+            computer.SetIsWinner(false);
             if(computer.GetIsAttacked())
             {
                 computer.Attack(riverCards, trumpCard);
@@ -182,7 +168,6 @@ namespace Durak
         {
             toolStripTextBoxHi.Text = @"hi" + logIn.NickName;
         }
-        //TODO: check every time if any hand already empty and declare a winner
         private void CardClick(object sender, EventArgs e)
         {
             var card = (CustomCardControl)sender;
@@ -190,66 +175,102 @@ namespace Durak
             if(player.GetIsAttacked() && MaxThrownCards < 6)
             {
                 btnDone.Enabled = true;
+                var length = riverCards.Count;
+                player.Attack(card, riverCards);
                 if(computer.GetFalseDefend()) // we are check if computer defend successful if he falsed, so we only attacking him
                 {
-                    var length = riverCards.Count;
-                    player.Attack(card, riverCards);
                     if(riverCards.Count > length)
                         MaxThrownCards++;
                 }
-                else // if he still not falsed, he continue to attack and he defend
+                else if(!computer.GetFalseDefend())// if computer still not falsed, player continue to attack and computer defend
                 {
-                    player.Attack(card, riverCards); // player attack
                     if(player.GetFalseAttack() == false) // if player's card was thrown to the river - FalsedAttack == false and computer continue to defend
                     {
                         MaxThrownCards++;
                         computer.Defend(card, riverCards, trumpCard);
+                        if(computerCards.Count == 0 && restCards.Count == 0) // if player attacked and has no cards and rest cards is empty, so he is winner
+                        {
+                            computer.SetIsWinner(true);
+                        }
                     }
+                }
+                if(playerCards.Count == 0 && restCards.Count == 0) // if player attacked and has no cards and rest cards is empty, so he is winner
+                {
+                    player.SetIsWinner(true);
                 }
             }
 
             //Player defend
             else if(computer.GetIsAttacked())
             {
-                player.Defend(card, riverCards, trumpCard); // player defend last card
-                if(!player.GetFalseDefend()) // if player answered right computer continue to attack
+                
+                if(!player.GetFalseDefend() && !computer.GetIsWinner()) // if player answered right computer continue to attack
                 {
-                    if (MaxThrownCards < 6)
+                    player.Defend(card, riverCards, trumpCard); // player defend last card
+                    if (!player.GetFalseDefend())
                     {
-                        computer.Attack(riverCards, trumpCard);
-                        if(computer.GetFalseAttack()) // if computer can't attack and player defended well last card
+                        switch (playerCards.Count) 
                         {
-                            computer.SetIsAttacked(false);
-                            btnTake.Enabled = false;
+                        
+                            case 0 when restCards.Count == 0 && computerCards.Count == 0: 
+                                player.SetIsWinner(true);
+                                computer.SetIsWinner(true);
+                                break;
+                            // if player attacked and has no cards and rest cards is empty, so he is winner
+                            case 0 when restCards.Count == 0:
+                                player.SetIsWinner(true);
+                                break;
+                        }
+                        if (MaxThrownCards < 6)
+                        {
+                            computer.Attack(riverCards, trumpCard);
+                            if(computer.GetFalseAttack()) // if computer can't attack and player defended well last card
+                            {
+                                computer.SetIsAttacked(false);
+                                btnTake.Enabled = false;
+                                btnDone.Enabled = true;
+                            }
+                            else if(!computer.GetFalseAttack()) // if computer can attack and player defended well previous card
+                            {
+                                MaxThrownCards++;
+                                btnTake.Enabled = true;
+                                btnDone.Enabled = false;
+                            }
+                            if(computerCards.Count == 0 && restCards.Count == 0 && playerCards.Count > 1) // 
+                            {
+                                computer.SetIsWinner(true);
+                            }
+                        
+                        }
+                        else // if computer already throw 6 cards
+                        {
                             btnDone.Enabled = true;
-                        }
-                        else if(!computer.GetFalseAttack()) // if computer can attack and player defended well previous card
-                        {
-                            MaxThrownCards++;
-                            btnTake.Enabled = true;
-                            btnDone.Enabled = false;
+                            btnTake.Enabled = false;
                         }
                     }
-                    else // if computer already throw 6 cards
-                    {
-                        btnDone.Enabled = true;
-                        btnTake.Enabled = false;
-                    }
+                    
+                }
+                else if (!player.GetFalseDefend() && computer.GetIsWinner())
+                {
+                    ShowAllCards();
+                    CheckResultGame();
                 }
                 else // if player answered wrong computer continue to defend
                 {
+                    player.SetFalseDefend(false);
                     btnTake.Enabled = true;
                     btnDone.Enabled = false;
                 }
             }
-            
-            //label1.Text = MaxThrownCards.ToString();
             ShowAllCards();
+            CheckResultGame();
+            
         }
 
         private void btnTake_Click(object sender, EventArgs e)
         {
             btnTakeIsPressed = true;
+            player.SetFalseDefend(true);
             if(btnTake.Text == "Take all")
             {
                 btnTake.Text = "Take";
@@ -266,13 +287,15 @@ namespace Durak
                     {
                         countOfMaxDrawnCards--;
                         MaxThrownCards++;
-                    }
-                    
+                        if(computerCards.Count == 0 && restCards.Count == 0) // 
+                        {
+                            computer.SetIsWinner(true);
+                        }
+                    } 
                 }
-
+                
                 if(temp != riverCards.Count)
                 {
-                    ShowAllCards();
                     btnTake.Text = "Take all";
                 }
                 else
@@ -281,24 +304,31 @@ namespace Durak
                 }
 
             }
-            //label1.Text = MaxThrownCards.ToString();
-            //ShowDiscardPileCard(); // show discard pile card   
             ShowAllCards(); // show all cards
+            CheckResultGame();
         }
 
         private void btnDone_Click(object sender, EventArgs e)
         {
-            discardPileCards.AddRange(riverCards);
-            StartNextDeal();
-            //ShowDiscardPileCard(); // show discard pile card 
+            if (!(player.GetIsAttacked() && computer.GetFalseDefend() ||
+                computer.GetIsAttacked() && player.GetFalseDefend()))
+            {
+                discardPileCards.AddRange(riverCards);
+            }
             
+            StartNextDeal();
             ShowAllCards(); // show all cards
-            //MaxThrownCards = 0;
             btnDone.Enabled = false;
         }
 
         private void StartNextDeal()
         {
+            if(computerCards.Count == 0 && restCards.Count == 0) // 
+            {
+                playerCards.AddRange(riverCards);
+                ClearRiver();
+                computer.SetIsWinner(true);
+            }
             if(!btnTakeIsPressed)
             {
                 if(!computer.GetFalseDefend() && player.GetIsAttacked() || riverCards.Count == 12 && player.GetIsAttacked())
@@ -339,7 +369,7 @@ namespace Durak
                     ClearRiver();
                 }
             }
-            else if (btnTakeIsPressed) // in case in btnTakeIsPressed == true
+            else if (btnTakeIsPressed && !computer.GetIsWinner()) // in case in btnTakeIsPressed == true
             {
                 playerCards.AddRange(riverCards);
                 DealCardsToPlayers(computerCards);
@@ -353,10 +383,11 @@ namespace Durak
                 btnTake.Enabled = true; 
              
             }
-
+            
+            
             label1.Text =
             $"PC\nFDefend = {computer.GetFalseDefend()}\nFAttack = {computer.GetFalseAttack()}\nAttacked = {computer.GetIsAttacked()}\n" +
-            $"\nPlayer\nFDefend = {player.GetFalseDefend()}\nFAttack = {player.GetFalseAttack()}\nAttacked = {player.GetIsAttacked()}";
+            $"\nPlayer\nFDefend = {player.GetFalseDefend()}\nFAttack = {player.GetFalseAttack()}\nAttacked = {player.GetIsAttacked()}\nCountDeck = {riverCards.Count}";
 
 
 
@@ -380,7 +411,6 @@ namespace Durak
 
         private void ClearRiver()
         {
-            
             riverCards.Clear();
             pnlDeck.Controls.Clear();
         }
@@ -397,6 +427,35 @@ namespace Durak
             StartGame();
         }
 
+        private void CheckResultGame()
+        {
+            if (player.GetIsWinner() && computer.GetIsWinner())
+            {
+                MessageBox.Show("Draw");
+                
+                btnDone.Enabled = false;
+                btnTake.Enabled = false;
+            }
+            else if (player.GetIsWinner())
+            {
+                MessageBox.Show("You win!");
+                btnDone.Enabled = false;
+                btnTake.Enabled = false;
+            }
+            else if (computer.GetIsWinner())
+            {
+                MessageBox.Show("You lose!");
+                foreach (var card in pnlPlayer.Controls)
+                {
+                    ((CustomCardControl)card).CardClick -= CardClick;
+                } 
+                btnDone.Enabled = false;
+                btnTake.Enabled = false;
+            }
+            
+            
+            
+        }
         private void ClearPanels()
         {
             label1.Text = "";
@@ -413,8 +472,6 @@ namespace Durak
         private void ShowAllCards()
         {
             ShowTrump(trumpCard);
-            //playerCards = player.SortHand(playerCards);
-            //player.SortHand(playerCards);
             ShowPlayerCards(playerCards);
             ShowAiCards(computerCards);
             ShowDeckAboveTrumpCard(restCards);
@@ -429,22 +486,21 @@ namespace Durak
         private void ShowTrump(Card trump)
         {
             pnlTrump.Controls.Clear();
-
-            // TODO: When trump will be given to any player, need to change "trump.InHand" = false and leave visibility of trump card on table
-            if(restCards.Count > 0)
-            {
-                var myCard = new CustomCardControl();
-                myCard.Image = Resources.ResourceManager.GetObject(trump.GetName()) as Image;
-                myCard.Size = new Size(100, 71);
-                myCard.Card = trump;
-                myCard.RotateFlipImage(myCard.Image);
-                pnlTrump.Controls.Add(myCard);
-                pnlTrump.SendToBack();
-            }
-            else
-            {
-                pnlTrump.Visible = false;
-            }
+            var myCard = new CustomCardControl();
+            myCard.Image = Resources.ResourceManager.GetObject(trump.GetName()) as Image;
+            myCard.Size = new Size(100, 71);
+            myCard.Card = trump;
+            myCard.RotateFlipImage(myCard.Image);
+            pnlTrump.Controls.Add(myCard);
+            pnlTrump.SendToBack();
+            pnlTrump.GetType().GetMethod("SetStyle", BindingFlags.NonPublic | BindingFlags.Instance)
+                ?.Invoke(pnlTrump, new object[]
+                {
+                    ControlStyles.UserPaint |
+                    ControlStyles.AllPaintingInWmPaint |
+                    ControlStyles.DoubleBuffer,
+                    true
+                });
         }
 
         private void ShowDiscardPileCard()
@@ -454,6 +510,14 @@ namespace Durak
             myCard.BorderStyle = BorderStyle.None;
             myCard.Left = 0;
             pnlDiscardPile.Controls.Add(myCard);
+            pnlDiscardPile.GetType().GetMethod("SetStyle", BindingFlags.NonPublic | BindingFlags.Instance)
+                ?.Invoke(pnlDiscardPile, new object[]
+                {
+                    ControlStyles.UserPaint |
+                    ControlStyles.AllPaintingInWmPaint |
+                    ControlStyles.DoubleBuffer,
+                    true
+                });
         }
 
         private void ShowDeckAboveTrumpCard(List<Card> cards)
@@ -469,9 +533,18 @@ namespace Durak
                     myCard.Left = i;
                     pnlAboveTrump.Size = new Size(70 + count, 100);
                     pnlAboveTrump.Controls.Add(myCard);
+                    pnlAboveTrump.GetType().GetMethod("SetStyle", BindingFlags.NonPublic | BindingFlags.Instance)
+                        ?.Invoke(pnlAboveTrump, new object[]
+                        {
+                            ControlStyles.UserPaint |
+                            ControlStyles.AllPaintingInWmPaint |
+                            ControlStyles.DoubleBuffer,
+                            true
+                        });
                 }
             else
                 pnlAboveTrump.Visible = false;
+            
         }
 
         private void ShowPlayerCards(List<Card> cards)
@@ -498,6 +571,7 @@ namespace Durak
                     });
                 pnlPlayer.Controls.Add(myCard);
             }
+            
         }
 
 
@@ -513,17 +587,23 @@ namespace Durak
                 myCard.CardClick -= CardClick;
                 myCard.Card = cards[i];
                 myCard.Name = cards[i].GetName();
-                //
-
                 myCard.Size = new Size(71, 100);
                 myCard.Left = i * ((pnlAi.Width - 55) / cards.Count);
+                pnlAi.GetType().GetMethod("SetStyle", BindingFlags.NonPublic | BindingFlags.Instance)
+                    ?.Invoke(pnlAi, new object[]
+                    {
+                        ControlStyles.UserPaint |
+                        ControlStyles.AllPaintingInWmPaint |
+                        ControlStyles.DoubleBuffer,
+                        true
+                    });
                 pnlAi.Controls.Add(myCard);
             }
+            
         }
 
         private void ShowDeckCards(List<Card> cards)
         {
-            //TODO: change location of covered cards
             pnlDeck.Controls.Clear();
             for(var i = cards.Count - 1; i >= 0; i--)
             {
@@ -537,7 +617,7 @@ namespace Durak
                 myCard.Card = cards[i];
                 myCard.CardClick -= CardClick;
                 pnlDeck.GetType().GetMethod("SetStyle", BindingFlags.NonPublic | BindingFlags.Instance)
-                    ?.Invoke(pnlPlayer, new object[]
+                    ?.Invoke(pnlDeck, new object[]
                     {
                         ControlStyles.UserPaint |
                         ControlStyles.AllPaintingInWmPaint |
@@ -545,37 +625,55 @@ namespace Durak
                         true
                     });
                 pnlDeck.Controls.Add(myCard);
+                
             }
+            
         }
 
         private void SaveGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {        
+            if (!player.GetIsWinner() && !computer.GetIsWinner() )
+            {
+                try
+                {        
 
-                    FileStream fs = new FileStream("saveGame.bin", FileMode.Create); //create new binary file to save data
-                    BinaryFormatter bf = new BinaryFormatter();  //pointer that write in binary file
-                    fs.Position = 0; 
-                    bf.Serialize(fs,trumpCard);
-                    bf.Serialize(fs, playerCards);
-                    bf.Serialize(fs, computerCards); 
-                    bf.Serialize(fs,restCards);
-                    bf.Serialize(fs, discardPileCards);
-                    bf.Serialize(fs, riverCards);
-                    bf.Serialize(fs, btnTakeIsPressed);
-                    bf.Serialize(fs, MaxThrownCards);
-                    bf.Serialize(fs, btnTake.Text);
-                    bf.Serialize(fs, computer.GetIsAttacked());
-                    bf.Serialize(fs, player.GetIsAttacked());
+                        FileStream fs = new FileStream("saveGame.bin", FileMode.Create); //create new binary file to save data
+                        BinaryFormatter bf = new BinaryFormatter();  //pointer that write in binary file
+                        fs.Position = 0; 
+                        bf.Serialize(fs,trumpCard);
+                        bf.Serialize(fs, playerCards);
+                        bf.Serialize(fs, computerCards); 
+                        bf.Serialize(fs,restCards);
+                        bf.Serialize(fs, discardPileCards);
+                        bf.Serialize(fs, riverCards);
+                        bf.Serialize(fs, btnTakeIsPressed);
+                        bf.Serialize(fs, MaxThrownCards);
+                        bf.Serialize(fs, btnTake.Text);
+                        bf.Serialize(fs, btnTake.Enabled);
+                        bf.Serialize(fs, btnDone.Enabled);
+                        
+                        bf.Serialize(fs, computer.GetIsAttacked());
+                        bf.Serialize(fs, player.GetIsAttacked());
+                        bf.Serialize(fs, computer.GetFalseDefend());
+                        bf.Serialize(fs, player.GetFalseDefend());
+                        bf.Serialize(fs, computer.GetFalseAttack());
+                        bf.Serialize(fs, player.GetFalseAttack());
 
-                fs.Close();
+                    fs.Close();
+                        
+                        MessageBox.Show("GAME SAVED !");
+
+                }
+                catch (Exception err) {
+
+                    MessageBox.Show(err.Message);
+                }
+                
                     
-                    MessageBox.Show("GAME SAVED !");
-
             }
-            catch (Exception err) {
-
-                MessageBox.Show(err.Message);
+            else
+            {
+                MessageBox.Show("You can't save game after game is over");
             }
 
         }
@@ -599,20 +697,27 @@ namespace Durak
                 btnTakeIsPressed =  (bool)bf.Deserialize(fs);
                 MaxThrownCards = (int)bf.Deserialize(fs);
                 btnTake.Text = (string)bf.Deserialize(fs);
+                btnTake.Enabled = (bool)bf.Deserialize(fs);
+                btnDone.Enabled = (bool)bf.Deserialize(fs);
+                
                 computerisAttcked = (bool)bf.Deserialize(fs);
                 playerisAttcked = (bool)bf.Deserialize(fs);
-
-                fs.Close();
-                    //foreach (Card x in v)   test that is save
-                //MessageBox.Show(x.ToString());
-
-                ClearPanels();
+                
                 computer.SetIsAttacked(computerisAttcked);
                 player.SetIsAttacked(playerisAttcked);
                 player = new Player("Player", playerCards, player.GetIsAttacked());
                 computer = new Computer("Ai", computerCards, computer.GetIsAttacked()); // class Computer not class Player 
 
-                if (computer.GetIsAttacked())
+                computer.SetFalseDefend((bool)bf.Deserialize(fs));
+                player.SetFalseDefend((bool)bf.Deserialize(fs));
+                computer.SetFalseAttack((bool)bf.Deserialize(fs));
+                player.SetFalseAttack((bool)bf.Deserialize(fs));
+                
+                fs.Close();
+
+                ClearPanels();
+                
+                if(computer.GetIsAttacked() && riverCards.Count == 0)
                 {
                     computer.Attack(riverCards, trumpCard);
                     btnTake.Enabled = true;
@@ -620,16 +725,33 @@ namespace Durak
                 }
 
                 ShowAllCards();
-                MessageBox.Show("THE LAST SAVED GAME SUCCESFULLY LOADE!");
+                MessageBox.Show("THE LAST SAVED GAME SUCCESFULLY LOADED!");
             }
           
 
             catch (Exception err)
             {
-
                 MessageBox.Show(err.Message);
             }
 
+        }
+
+        private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var help = new Help();
+            help.ShowDialog();
+        }
+
+        private void ScoreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var score = new ScoreAndStatistics();
+            score.ShowDialog();
+        }
+
+        private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var settings = new Settings();
+            settings.ShowDialog();
         }
     }
 }

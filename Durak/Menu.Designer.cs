@@ -56,14 +56,9 @@ namespace Durak
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (0)))), ((int) (((byte) (64)))));
             this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripTextBoxHi,
-            this.GameToolStripMenuItem,
-            this.SettingsToolStripMenuItem,
-            this.ScoreToolStripMenuItem,
-            this.HelpToolStripMenuItem});
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.toolStripTextBoxHi, this.GameToolStripMenuItem, this.SettingsToolStripMenuItem, this.ScoreToolStripMenuItem, this.HelpToolStripMenuItem});
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -77,9 +72,9 @@ namespace Durak
             // toolStripTextBoxHi
             // 
             this.toolStripTextBoxHi.BackColor = System.Drawing.Color.White;
-            this.toolStripTextBoxHi.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripTextBoxHi.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.toolStripTextBoxHi.ForeColor = System.Drawing.Color.Maroon;
-            this.toolStripTextBoxHi.Image = ((System.Drawing.Image)(resources.GetObject("toolStripTextBoxHi.Image")));
+            this.toolStripTextBoxHi.Image = ((System.Drawing.Image) (resources.GetObject("toolStripTextBoxHi.Image")));
             this.toolStripTextBoxHi.Name = "toolStripTextBoxHi";
             this.toolStripTextBoxHi.Size = new System.Drawing.Size(28, 27);
             // 
@@ -87,11 +82,8 @@ namespace Durak
             // 
             this.GameToolStripMenuItem.AutoSize = false;
             this.GameToolStripMenuItem.BackColor = System.Drawing.Color.White;
-            this.GameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.NewGameToolStripMenuItem,
-            this.LoadGameToolStripMenuItem,
-            this.SaveGameToolStripMenuItem});
-            this.GameToolStripMenuItem.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {this.NewGameToolStripMenuItem, this.LoadGameToolStripMenuItem, this.SaveGameToolStripMenuItem});
+            this.GameToolStripMenuItem.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.GameToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.GameToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.GameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(2);
@@ -104,10 +96,10 @@ namespace Durak
             // NewGameToolStripMenuItem
             // 
             this.NewGameToolStripMenuItem.AutoSize = false;
-            this.NewGameToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.NewGameToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (0)))), ((int) (((byte) (64)))));
             this.NewGameToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.NewGameToolStripMenuItem.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewGameToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.NewGameToolStripMenuItem.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.NewGameToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (0)))), ((int) (((byte) (64)))));
             this.NewGameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(2);
             this.NewGameToolStripMenuItem.Name = "NewGameToolStripMenuItem";
             this.NewGameToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -118,10 +110,10 @@ namespace Durak
             // LoadGameToolStripMenuItem
             // 
             this.LoadGameToolStripMenuItem.AutoSize = false;
-            this.LoadGameToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.LoadGameToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (0)))), ((int) (((byte) (64)))));
             this.LoadGameToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.LoadGameToolStripMenuItem.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoadGameToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.LoadGameToolStripMenuItem.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.LoadGameToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (0)))), ((int) (((byte) (64)))));
             this.LoadGameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(2);
             this.LoadGameToolStripMenuItem.Name = "LoadGameToolStripMenuItem";
             this.LoadGameToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
@@ -133,10 +125,10 @@ namespace Durak
             // SaveGameToolStripMenuItem
             // 
             this.SaveGameToolStripMenuItem.AutoSize = false;
-            this.SaveGameToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.SaveGameToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (0)))), ((int) (((byte) (64)))));
             this.SaveGameToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.SaveGameToolStripMenuItem.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SaveGameToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.SaveGameToolStripMenuItem.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.SaveGameToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int) (((byte) (0)))), ((int) (((byte) (0)))), ((int) (((byte) (64)))));
             this.SaveGameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(2);
             this.SaveGameToolStripMenuItem.Name = "SaveGameToolStripMenuItem";
             this.SaveGameToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
@@ -146,33 +138,36 @@ namespace Durak
             // 
             // SettingsToolStripMenuItem
             // 
-            this.SettingsToolStripMenuItem.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SettingsToolStripMenuItem.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.SettingsToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.SettingsToolStripMenuItem.Margin = new System.Windows.Forms.Padding(2);
             this.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem";
             this.SettingsToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.SettingsToolStripMenuItem.Size = new System.Drawing.Size(91, 23);
             this.SettingsToolStripMenuItem.Text = "Settings ";
+            this.SettingsToolStripMenuItem.Click += new System.EventHandler(this.SettingsToolStripMenuItem_Click);
             // 
             // ScoreToolStripMenuItem
             // 
-            this.ScoreToolStripMenuItem.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ScoreToolStripMenuItem.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.ScoreToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.ScoreToolStripMenuItem.Margin = new System.Windows.Forms.Padding(2);
             this.ScoreToolStripMenuItem.Name = "ScoreToolStripMenuItem";
             this.ScoreToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.ScoreToolStripMenuItem.Size = new System.Drawing.Size(180, 23);
             this.ScoreToolStripMenuItem.Text = "Score and Statistics";
+            this.ScoreToolStripMenuItem.Click += new System.EventHandler(this.ScoreToolStripMenuItem_Click);
             // 
             // HelpToolStripMenuItem
             // 
-            this.HelpToolStripMenuItem.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HelpToolStripMenuItem.Font = new System.Drawing.Font("Cooper Black", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.HelpToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.HelpToolStripMenuItem.Margin = new System.Windows.Forms.Padding(2);
             this.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem";
             this.HelpToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.HelpToolStripMenuItem.Size = new System.Drawing.Size(59, 23);
             this.HelpToolStripMenuItem.Text = "Help";
+            this.HelpToolStripMenuItem.Click += new System.EventHandler(this.HelpToolStripMenuItem_Click);
             // 
             // pnlPlayer
             // 
@@ -264,7 +259,7 @@ namespace Durak
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = ((System.Drawing.Image) (resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(984, 671);
             this.Controls.Add(this.pnlDiscardPile);
@@ -280,7 +275,7 @@ namespace Durak
             this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -288,11 +283,11 @@ namespace Durak
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Durak";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Menu_FormClosing);
+            this.Load += new System.EventHandler(this.Menu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         private System.Windows.Forms.Button btnTake;
