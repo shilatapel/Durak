@@ -8,7 +8,10 @@ namespace Durak
     {
         public ScoreAndStatistics()
         {
+
+
             InitializeComponent();
+            
             ShowStats();
         }
 

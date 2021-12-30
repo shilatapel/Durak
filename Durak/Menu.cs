@@ -755,12 +755,15 @@ namespace Durak
             settings.Show();
         }
 
+        HelpGuide help = new HelpGuide();
         private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var help = new HelpGuide();
+            
             help.Show();
         }
 
+
+        ScoreAndStatistics score = new ScoreAndStatistics();
         private void ScoreToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //MessageBox.Show(Score.drawPoint.ToString());
@@ -801,9 +804,11 @@ namespace Durak
                 }
 
             }
-            var score = new ScoreAndStatistics();
-            score.Show();
 
+
+           
+            score.Show();
+             
             void createScoreFile(string filename, int dPoint, int pPoint, int cPoint)
             {   //save Score game in new Binary File  
 
