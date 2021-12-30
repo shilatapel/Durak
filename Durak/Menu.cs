@@ -48,7 +48,6 @@ namespace Durak
         //Function writes hi and the player name in the menu bar
         private void Menu_Load(object sender, EventArgs e)
         {
-            
             toolStripTextBoxHi.Text = @"Hi " + logIn.NickName + @" ";
         }
 
@@ -226,40 +225,42 @@ namespace Durak
             //Player defend
             else if(computer.GetIsAttacked())
             {
-                
-                if(!player.GetFalseDefend() && !computer.GetIsWinner()) // if player answered right computer continue to attack
+                // case if player answered right computer continue to attack and also checking if computer throwing not last card from hand (and his state isWinner = false)
+                if(!player.GetFalseDefend() && !computer.GetIsWinner()) 
                 {
-                    player.Defend(card, riverCards, trumpCard); // player defend last card
-                    if (!player.GetFalseDefend())
+                    player.Defend(card, riverCards, trumpCard); // player defending last card
+                    if (!player.GetFalseDefend()) // if defended last card
                     {
-                        switch (playerCards.Count) 
+                        switch (playerCards.Count)
                         {
-                        
-                            case 0 when restCards.Count == 0 && computerCards.Count == 0: 
+                            // if player has no cards and rest cards is empty and computer has no cards, so them states are IsWinner = true
+                            case 0 when (restCards.Count == 0 && computerCards.Count == 0):
                                 player.SetIsWinner(true);
                                 computer.SetIsWinner(true);
                                 break;
-                            // if player attacked and has no cards and rest cards is empty, so he is winner
+                            // if player has no cards and rest cards is empty and previous condition didn't happen,
+                            // it means that computer has cards and player's state isWinner = true
                             case 0 when restCards.Count == 0:
                                 player.SetIsWinner(true);
                                 break;
                         }
-                        if (MaxThrownCards < 6)
+                        
+                        if (MaxThrownCards < 6) // if from computer was thrown less than 6 cards he continue to attack
                         {
                             computer.Attack(riverCards, trumpCard);
-                            if(computer.GetFalseAttack()) // if computer can't attack and player defended well last card
+                            if(computer.GetFalseAttack()) // if computer don't have card to attack
                             {
                                 computer.SetIsAttacked(false);
                                 btnTake.Enabled = false;
                                 btnDone.Enabled = true;
                             }
-                            else if(!computer.GetFalseAttack()) // if computer can attack and player defended well previous card
+                            else if(!computer.GetFalseAttack()) // if computer attacked well 
                             {
                                 MaxThrownCards++;
                                 btnTake.Enabled = true;
                                 btnDone.Enabled = false;
                             }
-                            if(computerCards.Count == 0 && restCards.Count == 0 && playerCards.Count > 1) // 
+                            if(computerCards.Count == 0 && restCards.Count == 0 && playerCards.Count > 1) // if computer attacked and it was his last card his state IsWinner = true
                             {
                                 computer.SetIsWinner(true);
                             }
@@ -273,12 +274,15 @@ namespace Durak
                     }
                     
                 }
-                else if (!player.GetFalseDefend() && computer.GetIsWinner())
+                // case if player answered on computer's last card and he still has cards and computer already with state isWinner = true
+                else if (!player.GetFalseDefend() && computer.GetIsWinner()) 
                 {
+                    //statement can be empty, cause outside of this if statement executes same functions
                     ShowAllCards();
                     CheckResultGame();
                 }
-                else // if player answered wrong computer continue to defend
+                // any another case are -  player answering with wrong card and he continue to defend.
+                else
                 {
                     player.SetFalseDefend(false);
                     btnTake.Enabled = true;
@@ -294,72 +298,84 @@ namespace Durak
         {
             btnTakeIsPressed = true;
             player.SetFalseDefend(true);
-            if(btnTake.Text == "Take all")
+            switch (btnTake.Text)
             {
-                btnTake.Text = "Take";
-                StartNextDeal();
-            }
-            else if(btnTake.Text == "Take")
-            {
-                var temp = riverCards.Count;
-                var countOfMaxDrawnCards = playerCards.Count - 1;
-                while(!computer.GetFalseAttack() && MaxThrownCards < 6 && countOfMaxDrawnCards != 0) //check < 6
+                case "Take":
                 {
-                    computer.Attack(riverCards, trumpCard);
-                    if (!computer.GetFalseAttack())
+                    var temp = riverCards.Count; // count of cards in river if player decided to take card
+                    var countOfMaxDrawnCards = playerCards.Count - 1; // max count of cards that player can take in hand from river
+                    
+                    // till computer has cards to attack and count of thrown cards less then 6 and count of cards that player can take(on each step) not equal 0 
+                    while(!computer.GetFalseAttack() && MaxThrownCards < 6 && countOfMaxDrawnCards != 0) //check < 6
                     {
-                        countOfMaxDrawnCards--;
-                        MaxThrownCards++;
-                        if(computerCards.Count == 0 && restCards.Count == 0) // 
+                        computer.Attack(riverCards, trumpCard);
+                        if (!computer.GetFalseAttack()) // case if computer attacked well
                         {
-                            computer.SetIsWinner(true);
-                        }
-                    } 
-                }
-                
-                if(temp != riverCards.Count)
-                {
-                    btnTake.Text = "Take all";
-                }
-                else
-                {
-                    StartNextDeal();
-                }
+                            countOfMaxDrawnCards--; // count of cards that player can take in hand from river became less 1
+                            MaxThrownCards++; // count of cards that player already throw in river became more 1
+                            
+                            // case if computer attacked and it was his last card his state IsWinner = true
+                            if(computerCards.Count == 0 && restCards.Count == 0) 
+                            {
+                                computer.SetIsWinner(true);
+                            }
+                        } 
+                    }
+                    // here we are checking if computer thrown cards as button "Take" was pressed 
+                    if(temp != riverCards.Count)
+                    {
+                        btnTake.Text = "Take all";
+                    }
+                    // if not happend nothing 
+                    else
+                    {
+                        StartNextDeal();
+                    }
 
+                    break;
+                }
+                // case if computer thrown more cards after player pressed button "Take" 
+                case "Take all":
+                    btnTake.Text = "Take";
+                    StartNextDeal();
+                    break;
             }
-            ShowAllCards(); // show all cards
+            // showing  results after button in any state was pressed
+            ShowAllCards(); 
             CheckResultGame();
         }
 
         private void btnDone_Click(object sender, EventArgs e)
         {
             if (!(player.GetIsAttacked() && computer.GetFalseDefend() ||
-                computer.GetIsAttacked() && player.GetFalseDefend()))
+                computer.GetIsAttacked() && player.GetFalseDefend())) // case if we need to throw cards to discard pile and after display it
             {
                 discardPileCards.AddRange(riverCards);
             }
             
             StartNextDeal();
-            ShowAllCards(); // show all cards
+            ShowAllCards(); 
             btnDone.Enabled = false;
         }
 
+        /// <summary>
+        /// Function that start next deal and reset all variables and buttons
+        /// </summary>
         private void StartNextDeal()
         {
-            if(computerCards.Count == 0 && restCards.Count == 0) // 
+            //case if computer's state IsWinner = true same as if(computer.IsWinner)
+            if(computerCards.Count == 0 && restCards.Count == 0) 
             {
                 playerCards.AddRange(riverCards);
                 ClearRiver();
                 computer.SetIsWinner(true);
             }
-            if(!btnTakeIsPressed)
+            switch (btnTakeIsPressed)
             {
-                if(!computer.GetFalseDefend() && player.GetIsAttacked() || riverCards.Count == 12 && player.GetIsAttacked())
                 //  if computer defended well and we pressing button Done (end of player's attack) or 12 cards on the river when player attacks
-                {
+                case false when !computer.GetFalseDefend() && player.GetIsAttacked() || riverCards.Count == 12 && player.GetIsAttacked():
                     DealCardsToPlayers(playerCards);
                     DealCardsToPlayers(computerCards);
-                   
                     player.SetFalseAttack(false);
                     player.SetIsAttacked(false);
                     computer.SetIsAttacked(true);
@@ -367,11 +383,9 @@ namespace Durak
                     computer.Attack(riverCards, trumpCard);
                     MaxThrownCards = 1;
                     btnTake.Enabled = true;
-
-                }
-                else if(computer.GetFalseAttack() || riverCards.Count == 12 && computer.GetIsAttacked())
+                    break;
                 // if player defended well and we pressing button Done (end of computer's attack) or 12 cards on the river when computer attacks
-                {
+                case false when computer.GetFalseAttack() || riverCards.Count == 12 && computer.GetIsAttacked():
                     DealCardsToPlayers(computerCards);
                     DealCardsToPlayers(playerCards);
                     computer.SetFalseAttack(false);
@@ -380,31 +394,35 @@ namespace Durak
                     player.SetIsAttacked(true);
                     MaxThrownCards = 0;
                     ClearRiver();
-                }
-                else if(computer.GetFalseDefend() && player.GetIsAttacked())
-                // if we attacking and computer taking cards from table
+                    break;
+                case false:
                 {
-                    computerCards.AddRange(riverCards);
-                    DealCardsToPlayers(playerCards);
-                    DealCardsToPlayers(computerCards);
-                    computer.SetFalseDefend(false);
-                    MaxThrownCards = 0;
-                    ClearRiver();
+                    if(computer.GetFalseDefend() && player.GetIsAttacked())
+                        // if we attacking and computer taking cards from table
+                    {
+                        computerCards.AddRange(riverCards);
+                        DealCardsToPlayers(playerCards);
+                        DealCardsToPlayers(computerCards);
+                        computer.SetFalseDefend(false);
+                        MaxThrownCards = 0;
+                        ClearRiver();
+                    }
+
+                    break;
                 }
-            }
-            else if (btnTakeIsPressed && !computer.GetIsWinner()) // in case in btnTakeIsPressed == true
-            {
-                playerCards.AddRange(riverCards);
-                DealCardsToPlayers(computerCards);
-                DealCardsToPlayers(playerCards);
-                btnTakeIsPressed = false;
-                player.SetFalseDefend(false);
-                computer.SetFalseAttack(false);
-                ClearRiver();
-                computer.Attack(riverCards, trumpCard);
-                MaxThrownCards = 1;
-                btnTake.Enabled = true; 
-             
+                // in case in btnTakeIsPressed == true
+                case true when !computer.GetIsWinner():
+                    playerCards.AddRange(riverCards);
+                    DealCardsToPlayers(computerCards);
+                    DealCardsToPlayers(playerCards);
+                    btnTakeIsPressed = false;
+                    player.SetFalseDefend(false);
+                    computer.SetFalseAttack(false);
+                    ClearRiver();
+                    computer.Attack(riverCards, trumpCard);
+                    MaxThrownCards = 1;
+                    btnTake.Enabled = true;
+                    break;
             }
 
 
@@ -609,7 +627,7 @@ namespace Durak
                 //for check - later remove 
                 //myCard.Image = Resources.ResourceManager.GetObject(cards[i].GetName()) as Image;
                 myCard.CardClick -= CardClick;
-                myCard.Card = cards[i];
+                //myCard.Card = cards[i];
                 myCard.Name = cards[i].GetName();
                 myCard.Size = new Size(71, 100);
                 myCard.Left = i * ((pnlAi.Width - 55) / cards.Count);
@@ -665,11 +683,11 @@ namespace Durak
         //The function save the game in a binary file
         private void SaveGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
+           //possible to save game only if winner is still unknown
             if (!player.GetIsWinner() && !computer.GetIsWinner())
             {
                 try
-            {        
+                {        
 
                         FileStream fs = new FileStream("saveGame.bin", FileMode.Create); //create new binary file to save data
                         BinaryFormatter bf = new BinaryFormatter();  //pointer that write in binary file
@@ -781,38 +799,32 @@ namespace Durak
             //MessageBox.Show(Score.drawPoint.ToString()); // today.ToString()    check test
 
             string filename = logIn.NickName + "Score.txt";
-
-            if (!File.Exists(filename))
+            try
             {
-                createScoreFile(filename, Score.drawPoint, Score.playerPoint, Score.computerPoint);
-
-            }
-            else
-            {
-                try
+                if (!File.Exists(filename))
                 {
-                    using (FileStream fs = File.OpenRead(filename))
-                    using (BinaryReader br = new BinaryReader(fs))
-                    {
-                        br.ReadString();
-                        Score.drawPoint += br.ReadInt32();
-                        Score.playerPoint += br.ReadInt32();
-                        Score.computerPoint += br.ReadInt32();
-
-
-
-                        br.Close();
-                    }
                     createScoreFile(filename, Score.drawPoint, Score.playerPoint, Score.computerPoint);
-
-                }
-                catch (IOException err)
+                } 
+                //using (FileStream fs = File.OpenRead(filename))
+                using (BinaryReader br = new BinaryReader(File.Open(filename, FileMode.Open)))
                 {
-                    Console.WriteLine(err.Message + "\n Cannot open file.");
+                    br.ReadString();
+                    Score.drawPoint += br.ReadInt32();
+                    Score.playerPoint += br.ReadInt32();
+                    Score.computerPoint += br.ReadInt32();
 
+
+
+                    br.Close();
                 }
-
+                createScoreFile(filename, Score.drawPoint, Score.playerPoint, Score.computerPoint);
             }
+            catch (IOException err)
+            {
+                Console.WriteLine(err.Message + "\n Cannot open file.");
+            }
+
+            
             if (score.ShowDialog(this) == DialogResult.OK)
                 score.Show();
 
@@ -823,8 +835,8 @@ namespace Durak
 
                 try
                 {
-                    using (var fs = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None))
-                    using (var bw = new BinaryWriter(fs))
+                    //using (var fs = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None))
+                    using (var bw = new BinaryWriter(File.Open(filename, FileMode.Create, FileAccess.Write, FileShare.None)))
                     {
                         bw.Write(today.ToString("yyyy-M-dd--HH-mm-ss"));
                         bw.Write(dPoint);
@@ -862,12 +874,7 @@ namespace Durak
             {
                help.Show();
             }
-            
-            
         }
-
-
-       
     }
 }
 

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Security.AccessControl;
 
 namespace Durak
 {
@@ -31,7 +32,7 @@ namespace Durak
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSettingsClose = new System.Windows.Forms.Button();
             this.lblSettings = new System.Windows.Forms.Label();
             this.lblSuit = new System.Windows.Forms.Label();
             this.lblTable = new System.Windows.Forms.Label();
@@ -45,15 +46,15 @@ namespace Durak
             ((System.ComponentModel.ISupportInitialize) (this.picBoxTable)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnSettingsClose
             // 
-            this.button1.Location = new System.Drawing.Point(183, 382);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnSettingsClose.Location = new System.Drawing.Point(183, 382);
+            this.btnSettingsClose.Name = "btnSettingsClose";
+            this.btnSettingsClose.Size = new System.Drawing.Size(75, 23);
+            this.btnSettingsClose.TabIndex = 0;
+            this.btnSettingsClose.Text = "Close";
+            this.btnSettingsClose.UseVisualStyleBackColor = true;
+            this.btnSettingsClose.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblSettings
             // 
@@ -147,6 +148,8 @@ namespace Durak
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(465, 437);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Controls.Add(this.btnSuitRight);
             this.Controls.Add(this.btnSuitLeft);
             this.Controls.Add(this.btnTableLeft);
@@ -156,7 +159,7 @@ namespace Durak
             this.Controls.Add(this.lblTable);
             this.Controls.Add(this.lblSuit);
             this.Controls.Add(this.lblSettings);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSettingsClose);
             this.Name = "Settings";
             this.Text = "Settings";
             ((System.ComponentModel.ISupportInitialize) (this.picBoxSuit)).EndInit();
@@ -179,7 +182,7 @@ namespace Durak
         private System.Windows.Forms.Label lblSettings;
         private System.Windows.Forms.Label lblSuit;
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSettingsClose;
 
         #endregion
     }

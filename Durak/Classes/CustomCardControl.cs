@@ -6,6 +6,9 @@ using Durak.Properties;
 
 namespace Durak.Classes
 {
+    /// <summary>
+    ///   Represents a card in the game.
+    /// </summary>
     public class CustomCardControl : UserControl
     {
         private Card _card = new Card();
@@ -30,6 +33,9 @@ namespace Durak.Classes
         }
         public event EventHandler CardClick;
 
+        /// <summary>
+        ///   Initializes the card control.
+        /// </summary>
         private void InitializeComponent()
         {
             SuspendLayout();

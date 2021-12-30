@@ -5,6 +5,9 @@ using System.Windows.Forms;
 
 namespace Durak
 {
+    /// <summary>
+    ///  enum for the different types of cards
+    /// </summary>
     public enum ProgressBarDisplayMode
     {
         NoText,
@@ -14,26 +17,32 @@ namespace Durak
         TextAndPercentage,
         TextAndCurrProgress
     }
-
+    /// <summary>
+    ///  A Windows control that displays a progress bar with a text label.
+    /// </summary>
     public class TextProgressBar : ProgressBar
     {
         private SolidBrush _progressColourBrush = (SolidBrush) Brushes.LightGreen;
-
         private string _text = string.Empty;
         private SolidBrush _textColourBrush = (SolidBrush) Brushes.Black;
-
         private ProgressBarDisplayMode _visualMode = ProgressBarDisplayMode.CurrProgress;
-
+        
+        /// <summary>
+        ///  constructor
+        /// </summary>
         public TextProgressBar()
         {
             Value = Minimum;
             FixComponentBlinking();
         }
-
+        /// <summary>
+        ///  The colour of the progress bar
+        /// </summary>
         [Description("Font of the text on ProgressBar")]
         [Category("Additional Options")]
         public Font TextFont { get; set; }
-
+        
+        
         [Category("Additional Options")]
         public Color TextColor
         {
@@ -44,7 +53,7 @@ namespace Durak
                 _textColourBrush = new SolidBrush(value);
             }
         }
-
+        
         [Category("Additional Options")]
         [Browsable(true)]
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -57,7 +66,10 @@ namespace Durak
                 _progressColourBrush = new SolidBrush(value);
             }
         }
-
+        
+        /// <summary>
+        ///  The text to display
+        /// </summary>
         [Category("Additional Options")]
         [Browsable(true)]
         public ProgressBarDisplayMode VisualMode
@@ -69,7 +81,7 @@ namespace Durak
                 Invalidate(); //redraw component after change value from VS Properties section
             }
         }
-
+        
         [Description("If it's empty, % will be shown")]
         [Category("Additional Options")]
         [Browsable(true)]
@@ -83,7 +95,10 @@ namespace Durak
                 Invalidate(); //redraw component after change value from VS Properties section
             }
         }
-
+        
+        /// <summary>
+        ///  The text to display
+        /// </summary>
         private string _textToDraw
         {
             get
@@ -115,12 +130,13 @@ namespace Durak
 
         private string _currProgressStr => $"{Value}/{Maximum}";
 
+        
         private void FixComponentBlinking()
         {
             SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer,
                 true);
         }
-
+        
         protected override void OnPaint(PaintEventArgs e)
         {
             var g = e.Graphics;
@@ -146,7 +162,10 @@ namespace Durak
                 g.FillRectangle(_progressColourBrush, clip);
             }
         }
-
+        /// <summary>
+        ///  Draws the text if needed
+        /// </summary>
+        /// <param name="g"></param>
         private void DrawStringIfNeeded(Graphics g)
         {
             if (VisualMode != ProgressBarDisplayMode.NoText)
@@ -160,7 +179,9 @@ namespace Durak
                 g.DrawString(text, TextFont, _textColourBrush, location);
             }
         }
-
+        /// <summary>
+        ///  Dispose all resources
+        /// </summary>
         public new void Dispose()
         {
             _textColourBrush.Dispose();

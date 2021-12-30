@@ -7,21 +7,7 @@ namespace Durak.Classes
 {
     public class TriangleButton : Button
     {
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // TriangleButton
-            // 
-            this.BackColor = System.Drawing.Color.Transparent;
-            this.FlatAppearance.BorderSize = 0;
-            this.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = System.Drawing.Color.White;
-            this.UseVisualStyleBackColor = false;
-            this.ResumeLayout(false);
-
-        }
+        
         public TriangleButton()
         {
             _angle = 0;
@@ -30,9 +16,6 @@ namespace Durak.Classes
 
         private int _edgesCount;
         private float _angle;
-        
-        
-        
         public int EdgesCount
         {
             get { return _edgesCount; }
@@ -54,31 +37,35 @@ namespace Durak.Classes
                 OnSizeChanged(EventArgs.Empty);
             }
         }
-        
+        /// <summary>
+        ///  override the OnSizeChanged method to draw the triangle
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnHandleCreated(EventArgs e)
         {
             base.OnHandleCreated(e);
             OnSizeChanged(e);
         }
- 
+        /// <summary>
+        ///  Draws the background image and background color of the control using a specified graphics 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnSizeChanged(EventArgs e)
         {
             base.OnSizeChanged(e);
-            using (var path = new GraphicsPath())
+            using var path = new GraphicsPath();
+            var rect = ClientRectangle;
+            rect.Inflate(-3,-3);
+            var pt = new PointF(rect.X + rect.Width / 2f, rect.Y + rect.Height / 2f);
+            var r = Math.Min(rect.Height, rect.Width) / 2;
+            var points = new PointF[_edgesCount];
+            for (int i = 0; i < points.Length; i++)
             {
-                var rect = ClientRectangle;
-                rect.Inflate(-3,-3);
-                var pt = new PointF(rect.X + rect.Width / 2f, rect.Y + rect.Height / 2f);
-                var r = Math.Min(rect.Height, rect.Width) / 2;
-                var points = new PointF[_edgesCount];
-                for (int i = 0; i < points.Length; i++)
-                {
-                    points[i] = new PointF(pt.X + r * (float)Math.Cos(_angle +2 * Math.PI * i / _edgesCount),
-                        pt.Y + r * (float)Math.Sin(_angle +2 * Math.PI * i / _edgesCount));
-                }
-                path.AddPolygon(points);
-                Region = new Region(path);
+                points[i] = new PointF(pt.X + r * (float)Math.Cos(_angle +2 * Math.PI * i / _edgesCount),
+                    pt.Y + r * (float)Math.Sin(_angle +2 * Math.PI * i / _edgesCount));
             }
+            path.AddPolygon(points);
+            Region = new Region(path);
         }
     }
 }
