@@ -27,8 +27,13 @@ namespace Durak
         private List<Card> riverCards; // deck cards
         private Card trumpCard; // trump card
         private bool btnTakeIsPressed; // if the button take is pressed
-       
         DateTime today = DateTime.Now;
+        
+        // Initialization form
+        ScoreAndStatistics score = new ScoreAndStatistics();
+        HelpGuide help = new HelpGuide();
+        Settings settings = new Settings();
+
 
         public Menu()
         {
@@ -39,15 +44,17 @@ namespace Durak
         {
             Application.Exit();
         }
+        
+        //Function writes hi and the player name in the menu bar
         private void Menu_Load(object sender, EventArgs e)
         {
-            //Function writes hi and the player name in the menu bar
+            
             toolStripTextBoxHi.Text = @"Hi " + logIn.NickName + @" ";
         }
 
+        // A function that starts the game and determines who will play first and deals and shows the cards
         private void StartGame()
-        {
-            // A function that starts the game and determines who will play first and deals and shows the cards
+        { 
 
             //  Initialization variables
             fullDeck = new Deck(); // full deck of cards
@@ -145,7 +152,7 @@ namespace Durak
 
             //real conditions
             var step = FirstStepPlayer(playerCards, computerCards, trumpCard);
-            label1.Text = $@" {(step ? "Player " : "Ai")} starts";
+            //label1.Text = $@" {(step ? "Player " : "Ai")} starts"; //test
             player = new Player("Player", playerCards, step);
             computer = new Computer("Ai", computerCards, !step); // class Computer not class Player 
             
@@ -168,8 +175,9 @@ namespace Durak
         }
 
         
+        //The function choose who starts the game by searching the lowest trump card or if not found the will be random
         private bool FirstStepPlayer(List<Card> player1Cards, List<Card> player2Card, Card trump)
-        {   //The function choose who starts the game by searching the lowest trump card or if not found the will be random
+        {  
             
             var tempList = player1Cards.ToList();
             tempList.AddRange(player2Card); // add player 2 cards to player 1 cards
@@ -398,14 +406,15 @@ namespace Durak
                 btnTake.Enabled = true; 
              
             }
-            
-            
-            label1.Text =
+
+
+            //Check Test
+            /*label1.Text =
             $"PC\nFDefend = {computer.GetFalseDefend()}\nFAttack = {computer.GetFalseAttack()}\nAttacked = {computer.GetIsAttacked()}\n" +
-            $"\nPlayer\nFDefend = {player.GetFalseDefend()}\nFAttack = {player.GetFalseAttack()}\nAttacked = {player.GetIsAttacked()}\nCountDeck = {riverCards.Count}";
+            $"\nPlayer\nFDefend = {player.GetFalseDefend()}\nFAttack = {player.GetFalseAttack()}\nAttacked = {player.GetIsAttacked()}\nCountDeck = {riverCards.Count}";   */
 
 
-
+            //function deal to player and computer cards to complete 6 cards on hand. the cards sort
             void DealCardsToPlayers(List<Card> restCards)
             {
                 var temp = restCards.Count;
@@ -424,16 +433,30 @@ namespace Durak
             }
         }
 
+        //Clear River from cards
         private void ClearRiver()
         {
             riverCards.Clear();
             pnlDeck.Controls.Clear();
         }
 
+       //Clear all Panels
+        private void ClearPanels()
+        {
+            //label1.Text = "";
+           
+            btnDone.Enabled = false;
+            pnlAi.Controls.Clear();
+            pnlDeck.Controls.Clear();
+            pnlPlayer.Controls.Clear();
+            pnlTrump.Controls.Clear();
+            pnlAboveTrump.Controls.Clear();
+            pnlDiscardPile.Controls.Clear();
+        }
 
 
-
-        private void CheckResultGame()//The function checks the results of a draw, player win ,computer win
+         //The function checks the results of a draw, player win ,computer win  and update score
+        private void CheckResultGame()
         {
             if (player.GetIsWinner() && computer.GetIsWinner())
             {
@@ -461,23 +484,11 @@ namespace Durak
                 btnDone.Enabled = false;
                 btnTake.Enabled = false;
             }
-            
-            
-            
-        }
-        private void ClearPanels()
-        {
-            label1.Text = "";
-            label2.Text = "";
-            btnDone.Enabled = false;
-            pnlAi.Controls.Clear();
-            pnlDeck.Controls.Clear();
-            pnlPlayer.Controls.Clear();
-            pnlTrump.Controls.Clear();
-            pnlAboveTrump.Controls.Clear();
-            pnlDiscardPile.Controls.Clear();
+  
         }
 
+
+        // Show All image Cards in the game
         private void ShowAllCards()
         {
             ShowTrump(trumpCard);
@@ -491,7 +502,7 @@ namespace Durak
             }
         }
 
-
+         //show trump card image
         private void ShowTrump(Card trump)
         {
             pnlTrump.Controls.Clear();
@@ -512,6 +523,7 @@ namespace Durak
                 });
         }
 
+        //  show  Discard PileCard image
         private void ShowDiscardPileCard()
         {
             var myCard = new CustomCardControl();
@@ -529,6 +541,7 @@ namespace Durak
                 });
         }
 
+        //  Show Deck Above Trump Card   image
         private void ShowDeckAboveTrumpCard(List<Card> cards)
         {
             pnlAboveTrump.Controls.Clear();
@@ -556,6 +569,8 @@ namespace Durak
             
         }
 
+
+        //Show Player Cards images
         private void ShowPlayerCards(List<Card> cards)
         {
             pnlPlayer.Controls.Clear();
@@ -583,7 +598,7 @@ namespace Durak
             
         }
 
-
+        //Show computer Cards images
         private void ShowAiCards(List<Card> cards)  
         {
             pnlAi.Controls.Clear();
@@ -592,7 +607,7 @@ namespace Durak
                 var myCard = new CustomCardControl();
 
                 //for check - later remove 
-                myCard.Image = Resources.ResourceManager.GetObject(cards[i].GetName()) as Image;
+                //myCard.Image = Resources.ResourceManager.GetObject(cards[i].GetName()) as Image;
                 myCard.CardClick -= CardClick;
                 myCard.Card = cards[i];
                 myCard.Name = cards[i].GetName();
@@ -611,6 +626,7 @@ namespace Durak
             
         }
 
+       //Show Deck Cards
         private void ShowDeckCards(List<Card> cards)
         {
             pnlDeck.Controls.Clear();
@@ -638,13 +654,18 @@ namespace Durak
             }
             
         }
+
+
+        //The function start a new game 
         private void NewGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             StartGame();
         }
+
+        //The function save the game in a binary file
         private void SaveGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           //The function save the game in a binary file
+           
             if (!player.GetIsWinner() && !computer.GetIsWinner())
             {
                 try
@@ -691,9 +712,10 @@ namespace Durak
             }
 
         }
-
+        
+        //The function uploads from a binary file the game from the last point where it was stopped and saved
         private void LoadGameToolStripMenuItem_Click(object sender, EventArgs e)
-        {    //The function uploads from a binary file the game from the last point where it was stopped and saved
+        {   
             try
             { 
                 bool computerisAttcked;
@@ -702,6 +724,7 @@ namespace Durak
                 FileStream fs = new FileStream("saveGame.bin", FileMode.Open); //open file to read 
                 BinaryFormatter bf = new BinaryFormatter();  //pointer that read from binary file
                 //check = (List<Card>)bf.Deserialize(fs); //only for test
+                
                 trumpCard = (Card)bf.Deserialize(fs);
                 playerCards=(List<Card>)bf.Deserialize(fs);
                 computerCards = (List<Card>)bf.Deserialize(fs);
@@ -749,37 +772,13 @@ namespace Durak
             }
 
         }
-
-
-
-
-
-                              
-
-        private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var settings = new Settings();
-            settings.Show();
-        }
-
-        HelpGuide help = new HelpGuide();
-        private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //show guide help
-            help.Show();
-        }
-
-
-        ScoreAndStatistics score = new ScoreAndStatistics();
-        private void ScoreToolStripMenuItem_Click(object sender, EventArgs e)
+        
+       
         //The function Saves game points to a binary file checks if the player has logged in previously and shows the statistics of all games
+        private void ScoreToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-
-
-            //MessageBox.Show(Score.drawPoint.ToString());     check test
-            // today.ToString()
-
+            //MessageBox.Show(Score.drawPoint.ToString()); // today.ToString()    check test
 
             string filename = logIn.NickName + "Score.txt";
 
@@ -804,7 +803,6 @@ namespace Durak
 
                         br.Close();
                     }
-                    // MessageBox.Show(c.ToString());
                     createScoreFile(filename, Score.drawPoint, Score.playerPoint, Score.computerPoint);
 
                 }
@@ -815,13 +813,12 @@ namespace Durak
                 }
 
             }
-
-
-           
             score.Show();
-             
+
+
+            //save Score game in new Binary File   
             void createScoreFile(string filename, int dPoint, int pPoint, int cPoint)
-            {   //save Score game in new Binary File  
+            {
 
                 try
                 {
@@ -846,6 +843,23 @@ namespace Durak
 
             }
         }
+
+         //show setting :chang background of card or table 
+        private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+            settings.Show();
+        }
+        
+        
+        //show guide help
+        private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
+        {  
+            help.Show();
+        }
+
+
+       
     }
 }
 
