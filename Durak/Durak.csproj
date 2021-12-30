@@ -57,9 +57,15 @@
     </Compile>
     <Compile Include="Classes\Deal.cs" />
     <Compile Include="Classes\Deck.cs" />
+    <Compile Include="Classes\logIn.cs" />
     <Compile Include="Classes\Player.cs" />
     <Compile Include="Classes\Score.cs" />
-    <Compile Include="logIn.cs" />
+    <Compile Include="Classes\TextProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Classes\TriangleButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,9 +103,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TextProgressBar.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Welcome.cs">
       <SubType>Form</SubType>
     </Compile>
