@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
+
 namespace Durak
 {
     public partial class Menu : Form
@@ -25,11 +26,21 @@ namespace Durak
         private List<Card> riverCards; // deck cards
         private Card trumpCard; // trump card
         private bool btnTakeIsPressed; // if the button take is pressed
+       
+        DateTime today = DateTime.Now;
 
         public Menu()
         {
             InitializeComponent();
             StartGame();
+        }
+        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+        private void Menu_Load(object sender, EventArgs e)
+        {
+            toolStripTextBoxHi.Text = @"Hi " + logIn.NickName + @" ";
         }
 
         private void StartGame()
@@ -164,10 +175,7 @@ namespace Durak
         }
 
 
-        private void Menu_Load(object sender, EventArgs e)
-        {
-            toolStripTextBoxHi.Text = @"hi" + logIn.NickName;
-        }
+     
         private void CardClick(object sender, EventArgs e)
         {
             var card = (CustomCardControl)sender;
@@ -416,21 +424,13 @@ namespace Durak
         }
 
 
-        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
 
 
-        private void NewGameToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            StartGame();
-        }
-
-        private void CheckResultGame()
+        private void CheckResultGame()//The function checks the results of a draw, player win ,computer win
         {
             if (player.GetIsWinner() && computer.GetIsWinner())
             {
+                Score.drawPoint++;
                 MessageBox.Show("Draw");
                 
                 btnDone.Enabled = false;
@@ -438,12 +438,14 @@ namespace Durak
             }
             else if (player.GetIsWinner())
             {
+                Score.playerPoint++;
                 MessageBox.Show("You win!");
                 btnDone.Enabled = false;
                 btnTake.Enabled = false;
             }
             else if (computer.GetIsWinner())
             {
+                Score.computerPoint++;
                 MessageBox.Show("You lose!");
                 foreach (var card in pnlPlayer.Controls)
                 {
@@ -575,7 +577,7 @@ namespace Durak
         }
 
 
-        private void ShowAiCards(List<Card> cards)
+        private void ShowAiCards(List<Card> cards)  
         {
             pnlAi.Controls.Clear();
             for(var i = cards.Count - 1; i >= 0; i--)
@@ -629,10 +631,14 @@ namespace Durak
             }
             
         }
-
+        private void NewGameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StartGame();
+        }
         private void SaveGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(!player.GetIsWinner() && !computer.GetIsWinner())
+           //The function save the game in a binary file
+            if (!player.GetIsWinner() && !computer.GetIsWinner())
             {
                 try
             {        
@@ -680,7 +686,7 @@ namespace Durak
         }
 
         private void LoadGameToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        {    //The function uploads from a binary file the game from the last point where it was stopped and saved
             try
             { 
                 bool computerisAttcked;
@@ -688,8 +694,8 @@ namespace Durak
                 //List<Card> check = new List<Card>();    //only for test
                 FileStream fs = new FileStream("saveGame.bin", FileMode.Open); //open file to read 
                 BinaryFormatter bf = new BinaryFormatter();  //pointer that read from binary file
-                //check = (List<Card>)bf.Deserialize(fs);
-                trumpCard= (Card)bf.Deserialize(fs);
+                //check = (List<Card>)bf.Deserialize(fs); //only for test
+                trumpCard = (Card)bf.Deserialize(fs);
                 playerCards=(List<Card>)bf.Deserialize(fs);
                 computerCards = (List<Card>)bf.Deserialize(fs);
                 restCards = (List<Card>)bf.Deserialize(fs);
@@ -707,7 +713,7 @@ namespace Durak
                 computer.SetIsAttacked(computerisAttcked);
                 player.SetIsAttacked(playerisAttcked);
                 player = new Player("Player", playerCards, player.GetIsAttacked());
-                computer = new Computer("Ai", computerCards, computer.GetIsAttacked()); // class Computer not class Player 
+                computer = new Computer("Ai", computerCards, computer.GetIsAttacked());  
 
                 computer.SetFalseDefend((bool)bf.Deserialize(fs));
                 player.SetFalseDefend((bool)bf.Deserialize(fs));
@@ -737,22 +743,92 @@ namespace Durak
 
         }
 
-        private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var help = new Help();
-            help.ShowDialog();
-        }
 
-        private void ScoreToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var score = new ScoreAndStatistics();
-            score.ShowDialog();
-        }
+
+
+
+                              
 
         private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var settings = new Settings();
-            settings.ShowDialog();
+            settings.Show();
+        }
+
+        private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var help = new HelpGuide();
+            help.Show();
+        }
+
+        private void ScoreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show(Score.drawPoint.ToString());
+            // today.ToString()
+
+
+            string filename = logIn.NickName + "Score.txt";
+
+            if (!File.Exists(filename))
+            {
+                createScoreFile(filename, Score.drawPoint, Score.playerPoint, Score.computerPoint);
+
+            }
+            else
+            {
+                try
+                {
+                    using (FileStream fs = File.OpenRead(filename))
+                    using (BinaryReader br = new BinaryReader(fs))
+                    {
+                        br.ReadString();
+                        Score.drawPoint += br.ReadInt32();
+                        Score.playerPoint += br.ReadInt32();
+                        Score.computerPoint += br.ReadInt32();
+
+
+
+                        br.Close();
+                    }
+                    // MessageBox.Show(c.ToString());
+                    createScoreFile(filename, Score.drawPoint, Score.playerPoint, Score.computerPoint);
+
+                }
+                catch (IOException err)
+                {
+                    Console.WriteLine(err.Message + "\n Cannot open file.");
+
+                }
+
+            }
+            var score = new ScoreAndStatistics();
+            score.Show();
+
+            void createScoreFile(string filename, int dPoint, int pPoint, int cPoint)
+            {   //save Score game in new Binary File  
+
+                try
+                {
+                    using (var fs = new FileStream(filename, FileMode.Create, FileAccess.Write, FileShare.None))
+                    using (var bw = new BinaryWriter(fs))
+                    {
+                        bw.Write(today.ToString("yyyy-M-dd--HH-mm-ss"));
+                        bw.Write(dPoint);
+                        bw.Write(pPoint);
+                        bw.Write(cPoint);
+
+                        bw.Close();
+
+                    }
+
+                }
+                catch (IOException e)
+                {
+                    Console.WriteLine(e.Message + "\n Cannot create file.");
+
+                }
+
+            }
         }
     }
 }
