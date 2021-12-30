@@ -14,6 +14,7 @@ namespace Durak
 {
     public partial class Menu : Form
     {
+        //Creating variables
         private Computer computer; // player 2
         private List<Card> computerCards; // player 2 cards on the table
         private Deal deal; // dealed hands
@@ -40,11 +41,15 @@ namespace Durak
         }
         private void Menu_Load(object sender, EventArgs e)
         {
+            //Function writes hi and the player name in the menu bar
             toolStripTextBoxHi.Text = @"Hi " + logIn.NickName + @" ";
         }
 
         private void StartGame()
         {
+            // A function that starts the game and determines who will play first and deals and shows the cards
+
+            //  Initialization variables
             fullDeck = new Deck(); // full deck of cards
             deal = new Deal(); // dealed hands
             trumpCard = new Card(); // trump card
@@ -65,7 +70,7 @@ namespace Durak
             trumpCard = deal.GetTrump;
             restCards = deal.Deck;
 
-            //check
+            //check test
             /*trumpCard = new Card()
             {
                 Csuit = Card.SUIT.HEARTS,
@@ -149,6 +154,7 @@ namespace Durak
             //test conditions for testing
             //player = new Player("Player", playerCards, false);
             //computer = new Computer("Player2", computerCards, true); // same class for test
+            
             player.SetIsWinner(false);
             computer.SetIsWinner(false);
             if(computer.GetIsAttacked())
@@ -161,9 +167,10 @@ namespace Durak
             ShowAllCards();
         }
 
-        //choose who starts the game by searching the lowest trump card or if not found the will be random
+        
         private bool FirstStepPlayer(List<Card> player1Cards, List<Card> player2Card, Card trump)
-        {
+        {   //The function choose who starts the game by searching the lowest trump card or if not found the will be random
+            
             var tempList = player1Cards.ToList();
             tempList.AddRange(player2Card); // add player 2 cards to player 1 cards
             var lowestTrumpCard = tempList.Where(x => x.Csuit == trump.Csuit).Select(x => x).OrderBy(x => x.Cvalue)
@@ -758,15 +765,19 @@ namespace Durak
         HelpGuide help = new HelpGuide();
         private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            //show guide help
             help.Show();
         }
 
 
         ScoreAndStatistics score = new ScoreAndStatistics();
         private void ScoreToolStripMenuItem_Click(object sender, EventArgs e)
+        //The function Saves game points to a binary file checks if the player has logged in previously and shows the statistics of all games
         {
-            //MessageBox.Show(Score.drawPoint.ToString());
+
+
+
+            //MessageBox.Show(Score.drawPoint.ToString());     check test
             // today.ToString()
 
 

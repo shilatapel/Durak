@@ -17,8 +17,10 @@ namespace Durak
 
         private void ShowStats()
         {
+            //The function that shows statistics and points of the game
 
-     
+
+
 
             int countgames = Score.computerPoint + Score.playerPoint + Score.drawPoint + 1; // if 0, will be exception divide on 0 
             lblplayername.Text = logIn.NickName;
