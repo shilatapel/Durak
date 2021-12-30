@@ -9,14 +9,15 @@ namespace Durak
         public ScoreAndStatistics()
         {
             InitializeComponent();
+            ShowStats();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ShowStats()
         {
 
      
 
-            int countgames = Score.computerPoint + Score.playerPoint + Score.drawPoint; 
+            int countgames = Score.computerPoint + Score.playerPoint + Score.drawPoint + 1; // if 0, will be exception divide on 0 
             lblplayername.Text = logIn.NickName;
             lblCdraw.Text = Score.drawPoint.ToString();
             lblClost.Text = Score.playerPoint.ToString();
@@ -24,10 +25,10 @@ namespace Durak
             lblPdraw.Text = Score.drawPoint.ToString();
             lblPwin.Text = Score.playerPoint.ToString();
             lblPlost.Text = Score.computerPoint.ToString();
-            lblCprWin.Text =(100*Score.computerPoint/countgames) +"%";
-            lblCprLost.Text = (100 * Score.playerPoint / countgames) + "%";
-            lblPprLost.Text = (100 * Score.computerPoint / countgames) + "%";
-            lblPprWin.Text =(100* Score.playerPoint/countgames) + "%";
+            lblCprWin.Text =(100*Score.computerPoint/countgames) +"%"; //here
+            lblCprLost.Text = (100 * Score.playerPoint / countgames) + "%"; //here
+            lblPprLost.Text = (100 * Score.computerPoint / countgames) + "%"; //here
+            lblPprWin.Text =(100* Score.playerPoint/countgames) + "%"; //here
 
 
 
