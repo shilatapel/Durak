@@ -46,10 +46,8 @@ namespace Durak
             this.pnlAi = new System.Windows.Forms.Panel();
             this.pnlTrump = new System.Windows.Forms.Panel();
             this.pnlAboveTrump = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnDone = new System.Windows.Forms.Button();
             this.btnTake = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.pnlDiscardPile = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -216,14 +214,6 @@ namespace Durak
             this.pnlAboveTrump.Size = new System.Drawing.Size(72, 100);
             this.pnlAboveTrump.TabIndex = 9;
             // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(848, 140);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 291);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "1";
-            // 
             // btnDone
             // 
             this.btnDone.Enabled = false;
@@ -246,13 +236,6 @@ namespace Durak
             this.btnTake.UseVisualStyleBackColor = true;
             this.btnTake.Click += new System.EventHandler(this.btnTake_Click);
             // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(848, 50);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 33);
-            this.label2.TabIndex = 13;
-            // 
             // pnlDiscardPile
             // 
             this.pnlDiscardPile.BackColor = System.Drawing.Color.Transparent;
@@ -270,10 +253,8 @@ namespace Durak
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(984, 671);
             this.Controls.Add(this.pnlDiscardPile);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnTake);
             this.Controls.Add(this.btnDone);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlTrump);
             this.Controls.Add(this.pnlAboveTrump);
             this.Controls.Add(this.pnlAi);
@@ -300,10 +281,6 @@ namespace Durak
 
         private System.Windows.Forms.Button btnTake;
         private System.Windows.Forms.Button btnDone;
-
-        private System.Windows.Forms.Label label2;
-
-        private System.Windows.Forms.Label label1;
 
         private System.Windows.Forms.Panel pnlAboveTrump;
         private System.Windows.Forms.Panel pnlDiscardPile;

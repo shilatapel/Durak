@@ -4,6 +4,8 @@ using System.Linq;
 
 namespace Durak.Classes
 {
+
+    //class for Deck 36 CARDS
     internal class Deck : Card
     {
         private const int NumOfCards = 36; // number of all cards
@@ -14,6 +16,8 @@ namespace Durak.Classes
             GetDeck = new List<Card>(NumOfCards);
         }
 
+
+        //Set Up Deck
         protected void SetUpDeck()
         {
             foreach (SUIT s in Enum.GetValues(typeof(SUIT)))

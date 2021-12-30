@@ -21,9 +21,12 @@ namespace Durak
                 //W.Close();
             }
         }
-
+           
+        //The function check if player enter nickname and pick image profile to sign in
         private void btnSignIn_Click(object sender, EventArgs e)
         {
+          
+           
             if (txtName.Text != string.Empty && (radioBtnFemale.Checked || radioBtnMale.Checked))
             {
                 DialogResult = DialogResult.OK;
@@ -42,9 +45,12 @@ namespace Durak
                 MessageBox.Show("Invalid Nick Name or profile picture Please try Again", "ERROR", MessageBoxButtons.OK);
             }
         }
-
+             
+        
+        // close window
         protected override void OnFormClosing(FormClosingEventArgs e)
-        {
+        {       
+          
             if (MessageBox.Show("Are you sure you want to Exit?", "DURAK APP", MessageBoxButtons.YesNo) ==
                 DialogResult.No)
                 e.Cancel = true;

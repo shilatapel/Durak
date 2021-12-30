@@ -2,7 +2,7 @@
 
 namespace Durak.Classes
 {
-    
+       //card class 
     [Serializable] public class Card
     {
         public enum SUIT
@@ -30,11 +30,13 @@ namespace Durak.Classes
         public VALUE Cvalue { get; set; }
         public bool InHand { get; set; }
 
+        //get name of cards
         public string GetName()
         {
             return Csuit.ToString().Substring(0, 1).ToLower() + ((int) Cvalue);
         }
 
+        //card to string
         public override string ToString()
         {
             return Cvalue + " of " + Csuit;

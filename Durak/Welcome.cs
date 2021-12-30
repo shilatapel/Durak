@@ -10,6 +10,7 @@ namespace Durak
             InitializeComponent();
         }
 
+        //func Show Welcome screen with image and progress bar
         private void Welcome_Load(object sender, EventArgs e)
         {
             prgBar.Value = 0;
@@ -17,6 +18,7 @@ namespace Durak
             timer1.Enabled = true;
         }
 
+        //show title in progress bar according the timer
         private void timer1_Tick(object sender, EventArgs e)
         {
             prgBar.Visible = true;

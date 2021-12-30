@@ -9,13 +9,14 @@ namespace Durak
         public ScoreAndStatistics()
         {
             InitializeComponent();
+
+            
             ShowStats();
         }
 
+        //The function that shows statistics and points of the game
         private void ShowStats()
         {
-
-     
 
             int countgames = Score.computerPoint + Score.playerPoint + Score.drawPoint + 1; // if 0, will be exception divide on 0 
             lblplayername.Text = logIn.NickName;
@@ -29,10 +30,6 @@ namespace Durak
             lblCprLost.Text = (100 * Score.playerPoint / countgames) + "%"; //here
             lblPprLost.Text = (100 * Score.computerPoint / countgames) + "%"; //here
             lblPprWin.Text =(100* Score.playerPoint/countgames) + "%"; //here
-
-
-
-
         }
 
         private void btnOK_Click(object sender, EventArgs e)
