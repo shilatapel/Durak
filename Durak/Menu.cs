@@ -29,7 +29,7 @@ namespace Durak
         private bool btnTakeIsPressed; // if the button take is pressed
         DateTime today = DateTime.Now;
         
-        // Initialization form
+        // Initializ form
         ScoreAndStatistics score = new ScoreAndStatistics();
         HelpGuide help = new HelpGuide();
         Settings settings = new Settings();
@@ -56,7 +56,7 @@ namespace Durak
         private void StartGame()
         { 
 
-            //  Initialization variables
+            //  Initializ variables
             fullDeck = new Deck(); // full deck of cards
             deal = new Deal(); // dealed hands
             trumpCard = new Card(); // trump card
@@ -813,7 +813,8 @@ namespace Durak
                 }
 
             }
-            score.Show();
+            if (score.ShowDialog(this) == DialogResult.OK)
+                score.Show();
 
 
             //save Score game in new Binary File   
@@ -847,15 +848,22 @@ namespace Durak
          //show setting :chang background of card or table 
         private void SettingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           
-            settings.Show();
+            if (settings.ShowDialog(this) == DialogResult.OK)
+            {
+                settings.Show();
+            }      
         }
         
         
         //show guide help
         private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
-        {  
-            help.Show();
+        {
+            if (help.ShowDialog(this) == DialogResult.OK)
+            {
+               help.Show();
+            }
+            
+            
         }
 
 

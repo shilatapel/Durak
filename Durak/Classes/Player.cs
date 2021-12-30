@@ -13,8 +13,12 @@ namespace Durak.Classes
         private bool IsWinner { get; set; }
         private bool IsAttacked { get; set; }
         
-        
         private bool FalseDefend { get; set; }
+        private bool FalseAttack { get; set; }
+
+
+
+        //getters and setters
         public bool GetIsWinner()
         {
             return IsWinner;
@@ -31,9 +35,7 @@ namespace Durak.Classes
         {
             FalseDefend = value;
         }
-        
-        
-        private bool FalseAttack { get; set; }
+
         public bool GetFalseAttack()
         {
             return FalseAttack;
@@ -77,6 +79,8 @@ namespace Durak.Classes
         {
             return IsAttacked;
         }
+
+        // player Attack 
         public void Attack(CustomCardControl card, List<Card> riverCards)
         {
             var attackedCard = card.Card;
@@ -101,10 +105,10 @@ namespace Durak.Classes
             
         }
 
-        
 
-        
 
+
+        // player Defend 
         public void Defend(CustomCardControl card, List<Card> riverCards, Card trumpCard)
         {
             var attackedCard = riverCards.Last();

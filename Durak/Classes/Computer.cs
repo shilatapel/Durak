@@ -4,8 +4,8 @@ using System.Linq;
 
 namespace Durak.Classes
 {
-   
-   
+
+    //class  Computer  
     public class Computer 
     {
         
@@ -16,6 +16,12 @@ namespace Durak.Classes
         private bool IsAttacked { get; set; }
         
         private bool IsWinner { get; set; }
+        private bool FalseDefend { get; set; }
+        
+          //public int CountOfAttackedCards { get; private set; }
+        
+        
+          //gettesr and setters
         public bool GetIsWinner()
         {
             return IsWinner;
@@ -24,14 +30,16 @@ namespace Durak.Classes
         {
             IsWinner = value;
         }
-        //public int CountOfAttackedCards { get; private set; }
-        //getter fo IsAttacked
+      
+       
         public bool GetIsAttacked()
         {
             return IsAttacked;
         }
-        
-        
+       public void SetIsAttacked(bool value)
+        {
+            IsAttacked = value;
+        }
         private bool FalseAttack { get; set; }
         public bool GetFalseAttack()
         {
@@ -41,9 +49,7 @@ namespace Durak.Classes
         {
             FalseAttack = value;
         }
-        
-        
-        private bool FalseDefend { get; set; }
+     
         public bool GetFalseDefend()
         {
             return FalseDefend;
@@ -52,8 +58,9 @@ namespace Durak.Classes
         {
             FalseDefend = value;
         }
-        
-        
+
+
+        //constructor  initializ
         public Computer(string name, List<Card> computerCards, bool isAttacked)
         {
             Name = name;
@@ -78,10 +85,10 @@ namespace Durak.Classes
         {
             ComputerCards.Remove(card);
         }
-        public void SetIsAttacked(bool value)
-        {
-            IsAttacked = value;
-        }
+
+
+
+        //computer  Attack 
         public void Attack(List<Card> riverCards, Card trump)
         {
             
@@ -125,6 +132,7 @@ namespace Durak.Classes
             }
         }
 
+        //computer    Defend
         public void Defend(CustomCardControl card, List<Card> riverCards, Card trump)
         {
             // TODO : to sort cards candidates to throw before step. (to throw the lowest candidate)

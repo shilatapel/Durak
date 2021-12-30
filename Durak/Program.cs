@@ -9,6 +9,8 @@ namespace Durak
         ///     The main entry point for the application.
         /// </summary>
         [STAThread]
+        
+        //start program from welcome screen
         private static void Main()
         {
             Application.EnableVisualStyles();

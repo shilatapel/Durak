@@ -3,8 +3,11 @@ using System.Linq;
 
 namespace Durak.Classes
 {
+    //CLASS FOR DEAL
     internal class Deal : Deck
     {
+        //creat list of cards hands
+       
         private List<Card> _computerHand;
         private List<Card> _playerHand;
         public List<Card> Deck;
@@ -14,6 +17,8 @@ namespace Durak.Classes
 
         public List<Card> SortedComputerHand { get; }
 
+
+        //constructor lists hands 
         public Deal()
         {
             _playerHand = new List<Card>(6);
@@ -22,8 +27,9 @@ namespace Durak.Classes
             SortedComputerHand = new List<Card>(6);
         }
 
-        
 
+
+        //func for  Deal Cards
         public void DealCards()
         {
             SetUpDeck(); //create the deck of cards and shuffle them
@@ -32,6 +38,8 @@ namespace Durak.Classes
         }
 
 
+
+        //  Get Hand 
         private void GetHand()
         {
             //6 cards for player and for ai
@@ -46,6 +54,7 @@ namespace Durak.Classes
             foreach (var card in GetDeck) Deck.Add(card);
         }
 
+        //Sort Hand order by suit and value
         public void SortHand()
         {
             var queryPlayer = _playerHand.GroupBy(x => x.Csuit).Select(x => new

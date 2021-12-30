@@ -12,8 +12,9 @@ namespace Durak
 {
     public partial class HelpGuide : Form
     {
+        //The function shows a user guide
         public HelpGuide()
-        {     //The function shows a user guide
+        {    
             InitializeComponent();
           
             lbltext.Text = "Welcome to the game Durak Here is an explanation of how to play\n\n" +
@@ -52,7 +53,7 @@ namespace Durak
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
         }
     }
 }
