@@ -42,6 +42,7 @@ namespace Durak
             this.btnTableLeft = new Durak.Classes.TriangleButton();
             this.btnSuitLeft = new Durak.Classes.TriangleButton();
             this.btnSuitRight = new Durak.Classes.TriangleButton();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize) (this.picBoxSuit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize) (this.picBoxTable)).BeginInit();
             this.SuspendLayout();
@@ -109,6 +110,7 @@ namespace Durak
             this.btnTableRight.Size = new System.Drawing.Size(32, 61);
             this.btnTableRight.TabIndex = 6;
             this.btnTableRight.UseVisualStyleBackColor = false;
+            this.btnTableRight.Click += new System.EventHandler(this.btnTableRight_Click);
             // 
             // btnTableLeft
             // 
@@ -120,6 +122,7 @@ namespace Durak
             this.btnTableLeft.Size = new System.Drawing.Size(32, 61);
             this.btnTableLeft.TabIndex = 7;
             this.btnTableLeft.UseVisualStyleBackColor = false;
+            this.btnTableLeft.Click += new System.EventHandler(this.btnTableLeft_Click);
             // 
             // btnSuitLeft
             // 
@@ -131,6 +134,7 @@ namespace Durak
             this.btnSuitLeft.Size = new System.Drawing.Size(32, 61);
             this.btnSuitLeft.TabIndex = 8;
             this.btnSuitLeft.UseVisualStyleBackColor = false;
+            this.btnSuitLeft.Click += new System.EventHandler(this.btnSuitLeft_Click);
             // 
             // btnSuitRight
             // 
@@ -142,14 +146,21 @@ namespace Durak
             this.btnSuitRight.Size = new System.Drawing.Size(32, 61);
             this.btnSuitRight.TabIndex = 9;
             this.btnSuitRight.UseVisualStyleBackColor = false;
+            this.btnSuitRight.Click += new System.EventHandler(this.btnSuitRight_Click);
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(38, 180);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(149, 69);
+            this.label1.TabIndex = 10;
             // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(465, 437);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSuitRight);
             this.Controls.Add(this.btnSuitLeft);
             this.Controls.Add(this.btnTableLeft);
@@ -160,12 +171,16 @@ namespace Durak
             this.Controls.Add(this.lblSuit);
             this.Controls.Add(this.lblSettings);
             this.Controls.Add(this.btnSettingsClose);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Settings";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Settings";
             ((System.ComponentModel.ISupportInitialize) (this.picBoxSuit)).EndInit();
             ((System.ComponentModel.ISupportInitialize) (this.picBoxTable)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Label label1;
 
         private Durak.Classes.TriangleButton btnSuitLeft;
         private Durak.Classes.TriangleButton btnSuitRight;

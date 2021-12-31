@@ -259,12 +259,27 @@
     <Content Include="Resources\Cards\back3.jpg" />
     <Content Include="Resources\Cards\back4.jpg" />
     <Content Include="Resources\Cards\back5.jpg" />
+    <Content Include="Resources\enter.png" />
+    <Content Include="Resources\female.png" />
+    <Content Include="Resources\icon durak00.ico" />
+    <Content Include="Resources\loginback.jpeg" />
+    <Content Include="Resources\logo durak רקע לבן %282%29.jpeg" />
+    <Content Include="Resources\logo.png" />
+    <Content Include="Resources\logoico.ico" />
+    <Content Include="Resources\logoicon.ico" />
+    <Content Include="Resources\logoTrans.png" />
+    <Content Include="Resources\logowhite.jpeg" />
+    <Content Include="Resources\male.png" />
     <Content Include="Resources\table1.jpg" />
     <Content Include="Resources\table2.jpg" />
     <Content Include="Resources\table3.jpg" />
     <Content Include="Resources\table4.jpg" />
     <Content Include="Resources\table5.jpg" />
     <Content Include="Resources\table6.jpg" />
+    <Content Include="Resources\לוגו durak00.png" />
+    <Content Include="Resources\לוגו durak16x16.ico" />
+    <Content Include="Resources\לוגו durak32x32.ico" />
+    <Content Include="Resources\לוגו durak32x32.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

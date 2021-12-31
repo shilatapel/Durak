@@ -34,12 +34,19 @@ namespace Durak
         HelpGuide help = new HelpGuide();
         Settings settings = new Settings();
 
-
+        /// <summary>
+        ///  Initialize form and starting main function
+        /// </summary>
         public Menu()
         {
             InitializeComponent();
             StartGame();
         }
+        /// <summary>
+        ///  Form Closing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Menu_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
@@ -51,7 +58,7 @@ namespace Durak
             toolStripTextBoxHi.Text = @"Hi " + logIn.NickName + @" ";
         }
 
-        // A function that starts the game and determines who will play first and deals and shows the cards
+        // A function that starts the game, initialize all variables and determines who will play first and deals and shows the cards
         private void StartGame()
         { 
 
@@ -163,6 +170,7 @@ namespace Durak
             
             player.SetIsWinner(false);
             computer.SetIsWinner(false);
+            // if computer's turn first, he starting attack
             if(computer.GetIsAttacked())
             {
                 computer.Attack(riverCards, trumpCard);
@@ -189,7 +197,11 @@ namespace Durak
         }
 
 
-     
+        /// <summary>
+        ///  Processing click  on the card by player
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CardClick(object sender, EventArgs e)
         {
             var card = (CustomCardControl)sender;
