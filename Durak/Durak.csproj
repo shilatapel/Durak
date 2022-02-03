@@ -117,7 +117,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ScoreAndStatistics.resx">
@@ -146,140 +145,64 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Cards\c14.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\c6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\c7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\c8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\c9.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\c10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\c11.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\c12.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\c13.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\d14.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\d6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\d7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\d8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\d9.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\d10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\d11.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\d12.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\d13.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\h14.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\h6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\h7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\h8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\h9.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\h10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\h11.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\h12.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\h13.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\s14.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\s6.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\s7.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\s8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\s9.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\s10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\s11.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\s12.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Cards\s13.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Resources\Cards\back1.jpg" />
     <Content Include="Resources\Cards\back2.jpg" />
     <Content Include="Resources\Cards\back3.jpg" />
     <Content Include="Resources\Cards\back4.jpg" />
     <Content Include="Resources\Cards\back5.jpg" />
-    <Content Include="Resources\enter.png" />
-    <Content Include="Resources\female.png" />
-    <Content Include="Resources\icon durak00.ico" />
-    <Content Include="Resources\loginback.jpeg" />
-    <Content Include="Resources\logo durak רקע לבן %282%29.jpeg" />
-    <Content Include="Resources\logo.png" />
-    <Content Include="Resources\logoico.ico" />
-    <Content Include="Resources\logoicon.ico" />
-    <Content Include="Resources\logoTrans.png" />
-    <Content Include="Resources\logowhite.jpeg" />
-    <Content Include="Resources\male.png" />
+    <Content Include="Resources\Cards\c10.png" />
+    <Content Include="Resources\Cards\c11.png" />
+    <Content Include="Resources\Cards\c12.png" />
+    <Content Include="Resources\Cards\c13.png" />
+    <Content Include="Resources\Cards\c14.png" />
+    <Content Include="Resources\Cards\c6.png" />
+    <Content Include="Resources\Cards\c7.png" />
+    <Content Include="Resources\Cards\c8.png" />
+    <Content Include="Resources\Cards\c9.png" />
+    <Content Include="Resources\Cards\d10.png" />
+    <Content Include="Resources\Cards\d11.png" />
+    <Content Include="Resources\Cards\d12.png" />
+    <Content Include="Resources\Cards\d13.png" />
+    <Content Include="Resources\Cards\d14.png" />
+    <Content Include="Resources\Cards\d6.png" />
+    <Content Include="Resources\Cards\d7.png" />
+    <Content Include="Resources\Cards\d8.png" />
+    <Content Include="Resources\Cards\d9.png" />
+    <Content Include="Resources\Cards\h10.png" />
+    <Content Include="Resources\Cards\h11.png" />
+    <Content Include="Resources\Cards\h12.png" />
+    <Content Include="Resources\Cards\h13.png" />
+    <Content Include="Resources\Cards\h14.png" />
+    <Content Include="Resources\Cards\h6.png" />
+    <Content Include="Resources\Cards\h7.png" />
+    <Content Include="Resources\Cards\h8.png" />
+    <Content Include="Resources\Cards\h9.png" />
+    <Content Include="Resources\Cards\s10.png" />
+    <Content Include="Resources\Cards\s11.png" />
+    <Content Include="Resources\Cards\s12.png" />
+    <Content Include="Resources\Cards\s13.png" />
+    <Content Include="Resources\Cards\s14.png" />
+    <Content Include="Resources\Cards\s6.png" />
+    <Content Include="Resources\Cards\s7.png" />
+    <Content Include="Resources\Cards\s8.png" />
+    <Content Include="Resources\Cards\s9.png" />
+    <Content Include="Resources\Logo\icon durak00.ico" />
+    <Content Include="Resources\Logo\logo durak רקע לבן (2).jpeg" />
+    <Content Include="Resources\Logo\logo.png" />
+    <Content Include="Resources\Logo\logoico.ico" />
+    <Content Include="Resources\Logo\logoicon.ico" />
+    <Content Include="Resources\Logo\logoTrans.png" />
+    <Content Include="Resources\Logo\logowhite.jpeg" />
+    <Content Include="Resources\Logo\לוגו durak00.png" />
+    <Content Include="Resources\Logo\לוגו durak16x16.ico" />
+    <Content Include="Resources\Logo\לוגו durak32x32.ico" />
+    <Content Include="Resources\Logo\לוגו durak32x32.svg" />
+    <Content Include="Resources\table0.jpg" />
     <Content Include="Resources\table1.jpg" />
     <Content Include="Resources\table2.jpg" />
     <Content Include="Resources\table3.jpg" />
     <Content Include="Resources\table4.jpg" />
     <Content Include="Resources\table5.jpg" />
-    <Content Include="Resources\table6.jpg" />
-    <Content Include="Resources\לוגו durak00.png" />
-    <Content Include="Resources\לוגו durak16x16.ico" />
-    <Content Include="Resources\לוגו durak32x32.ico" />
-    <Content Include="Resources\לוגו durak32x32.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

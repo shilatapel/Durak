@@ -41,7 +41,8 @@ namespace Durak.Classes
             SuspendLayout();
             _cardPictureBox = new PictureBox();
             ((ISupportInitialize) _cardPictureBox).BeginInit();
-            _cardPictureBox.Image = Resources.back1;
+            //_cardPictureBox.Image = Resources.back1;
+            _cardPictureBox.Image = logIn.backImage;
             _cardPictureBox.Location = new Point(0, 0);
             _cardPictureBox.Name = "_cardPictureBox";
             _cardPictureBox.Size = new Size(100, 150);
@@ -59,7 +60,8 @@ namespace Durak.Classes
 
         private void StartingCardImage()
         {
-            _cardPictureBox.Image = Resources.back1;
+            //_cardPictureBox.Image = Resources.back1;
+            _cardPictureBox.Image = logIn.backImage;
             _cardPictureBox.Refresh();
         }
 

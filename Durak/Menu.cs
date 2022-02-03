@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization.Formatters.Binary;
 
 
@@ -875,7 +876,14 @@ namespace Durak
             if (settings.ShowDialog(this) == DialogResult.OK)
             {
                 settings.Show();
-            }      
+            }  
+            BackgroundImage = logIn.tableImage;
+            ShowAiCards(computerCards);
+            ShowDeckAboveTrumpCard(restCards);
+            if(discardPileCards.Count > 0)
+            {
+                ShowDiscardPileCard();
+            }
         }
         
         
