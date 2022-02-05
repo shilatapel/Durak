@@ -63,13 +63,13 @@ namespace Durak
             pnlAboveTrump.Visible = true;
             ClearPanels();
             deal.DealCards();
-            /*playerCards = deal.SortedPlayerHand;
+            playerCards = deal.SortedPlayerHand;
             computerCards = deal.SortedComputerHand;
-            trumpCard = deal.GetTrump;*/
+            trumpCard = deal.GetTrump;
             restCards = deal.Deck;
 
             //check test
-            trumpCard = new Card()
+            /*trumpCard = new Card()
             {
                 Csuit = Card.SUIT.HEARTS,
                 Cvalue = Card.VALUE.SIX
@@ -114,20 +114,20 @@ namespace Durak
                     Csuit = Card.SUIT.HEARTS,
                     Cvalue = Card.VALUE.TEN
                 }
-            };
+            };*/
 
             //real conditions
-            /*var step = FirstStepPlayer(playerCards, computerCards, trumpCard);
+            var step = FirstStepPlayer(playerCards, computerCards, trumpCard);
             //label1.Text = $@" {(step ? "Player " : "Ai")} starts"; //test
             player = new Player("Player", playerCards, step);
             computer = new Computer("Ai", computerCards, !step); // class Computer not class Player 
-            */
+            
             
 
 
             //test conditions for testing
-            player = new Player("Player", playerCards, true);
-            computer = new Computer("Player2", computerCards, false); // same class for test
+            /*player = new Player("Player", playerCards, true);
+            computer = new Computer("Player2", computerCards, false); // same class for test*/
             
             player.SetIsWinner(false);
             computer.SetIsWinner(false);
@@ -805,13 +805,7 @@ namespace Durak
           
             if (MessageBox.Show("Are you sure you want to Exit?", "DURAK APP", MessageBoxButtons.YesNo) ==
                 DialogResult.No)
-                e.Cancel = true;
-
-            /*else
-            {
-                //e.Cancel = false;
-            }#1#
-                
+                e.Cancel = true;      
         }*/
         /// <summary>
         ///  Form Closing
@@ -819,6 +813,20 @@ namespace Durak
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Menu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to Exit?", "DURAK APP", MessageBoxButtons.YesNo) ==
+                DialogResult.No)
+                e.Cancel = true;
+            else
+            {
+                SaveStatistics();
+                e.Cancel = false;
+               //Application.Exit();
+            }
+                
+        }
+
+        private void SaveStatistics()
         {
             var filename = logIn.NickName + "Score.txt";
             try
@@ -838,8 +846,10 @@ namespace Durak
             {
                 MessageBox.Show(error.Message + @"\n Cannot create file.");
             }
+        }
+        private void Menu_FormClosed(object sender, FormClosedEventArgs e)
+        {
             Application.Exit();
-            
         }
     }
 }

@@ -51,7 +51,7 @@ namespace Durak.Classes
                 GetDeck.RemoveAt(0);
             }
             Deck = new List<Card>();
-            //foreach (var card in GetDeck) Deck.Add(card);
+            foreach (var card in GetDeck) Deck.Add(card);
         }
 
         //Sort Hand order by suit and value

@@ -90,16 +90,5 @@ namespace Durak
             }
         }
 
-
-        // close window
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {       
-          
-            if (MessageBox.Show("Are you sure you want to Exit?", "DURAK APP", MessageBoxButtons.YesNo) ==
-                DialogResult.No)
-                e.Cancel = true;
-            else
-                e.Cancel = false;
-        }
     }
 }
