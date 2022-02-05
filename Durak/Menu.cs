@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 
 
 namespace Durak
@@ -27,13 +28,7 @@ namespace Durak
         private List<Card> riverCards; // deck cards
         private Card trumpCard; // trump card
         private bool btnTakeIsPressed; // if the button take is pressed
-        DateTime today = DateTime.Now;
         
-        // Initializ form
-        
-        
-        
-
         /// <summary>
         ///  Initialize form and starting main function
         /// </summary>
@@ -42,21 +37,11 @@ namespace Durak
             InitializeComponent();
             StartGame();
         }
-        /// <summary>
-        ///  Form Closing
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
         
         //Function writes hi and the player name in the menu bar
         private void Menu_Load(object sender, EventArgs e)
         {
             toolStripTextBoxHi.Text = @"Hi " + logIn.NickName + @" ";
-            
         }
 
         // A function that starts the game, initialize all variables and determines who will play first and deals and shows the cards
@@ -78,13 +63,13 @@ namespace Durak
             pnlAboveTrump.Visible = true;
             ClearPanels();
             deal.DealCards();
-            playerCards = deal.SortedPlayerHand;
+            /*playerCards = deal.SortedPlayerHand;
             computerCards = deal.SortedComputerHand;
-            trumpCard = deal.GetTrump;
+            trumpCard = deal.GetTrump;*/
             restCards = deal.Deck;
 
             //check test
-            /*trumpCard = new Card()
+            trumpCard = new Card()
             {
                 Csuit = Card.SUIT.HEARTS,
                 Cvalue = Card.VALUE.SIX
@@ -129,13 +114,14 @@ namespace Durak
                     Csuit = Card.SUIT.HEARTS,
                     Cvalue = Card.VALUE.TEN
                 }
-            };*/
+            };
 
             //real conditions
-            var step = FirstStepPlayer(playerCards, computerCards, trumpCard);
+            /*var step = FirstStepPlayer(playerCards, computerCards, trumpCard);
             //label1.Text = $@" {(step ? "Player " : "Ai")} starts"; //test
             player = new Player("Player", playerCards, step);
             computer = new Computer("Ai", computerCards, !step); // class Computer not class Player 
+            */
             
 
 
@@ -191,7 +177,7 @@ namespace Durak
                     if(riverCards.Count > length)
                         maxThrownCards++;
                 }
-                else if(!computer.GetFalseDefend())// if computer still not falsed, player continue to attack and computer defend
+                else if(!computer.GetFalseDefend())// if computer still not false, player continue to attack and computer defend
                 {
                     if(player.GetFalseAttack() == false) // if player's card was thrown to the river - FalsedAttack == false and computer continue to defend
                     {
@@ -313,7 +299,7 @@ namespace Durak
                     {
                         btnTake.Text = @"Take all";
                     }
-                    // if not happend nothing 
+                    // if not happened nothing 
                     else
                     {
                         StartNextDeal();
@@ -465,24 +451,23 @@ namespace Durak
         {
             if (player.GetIsWinner() && computer.GetIsWinner())
             {
-                Score.drawPoint++;
+                logIn.drawPoints++;
+                //Score.drawPoint++;
                 MessageBox.Show(@"Draw");
                 
                 btnDone.Enabled = false;
                 btnTake.Enabled = false;
-                Score.SetValues();
             }
             else if (player.GetIsWinner())
             {
-                Score.playerPoint++;
+                logIn.playerPoints++;
                 MessageBox.Show(@"You win!");
                 btnDone.Enabled = false;
                 btnTake.Enabled = false;
-                Score.SetValues();
             }
             else if (computer.GetIsWinner())
             {
-                Score.computerPoint++;
+                logIn.computerPoints++;
                 MessageBox.Show(@"You lose!");
                 foreach (var card in pnlPlayer.Controls)
                 {
@@ -490,7 +475,6 @@ namespace Durak
                 } 
                 btnDone.Enabled = false;
                 btnTake.Enabled = false;
-                Score.SetValues();
             }
   
         }
@@ -709,9 +693,7 @@ namespace Durak
                 catch (Exception err) {
 
                     MessageBox.Show(err.Message);
-                }
-                
-                    
+                } 
             }
         
             else
@@ -770,7 +752,7 @@ namespace Durak
                 }
 
                 ShowAllCards();
-                MessageBox.Show(@"THE LAST SAVED GAME SUCCESFULLY LOADED!");
+                MessageBox.Show(@"THE LAST SAVED GAME SUCCESSFULLY LOADED!");
             }
           
 
@@ -809,8 +791,6 @@ namespace Durak
                 ShowDiscardPileCard();
             }
         }
-        
-        
         //show guide help
         private void HelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -819,6 +799,47 @@ namespace Durak
             {
                help.Show();
             }
+        }
+        /*protected override void OnFormClosing(FormClosingEventArgs e)
+        {       
+          
+            if (MessageBox.Show("Are you sure you want to Exit?", "DURAK APP", MessageBoxButtons.YesNo) ==
+                DialogResult.No)
+                e.Cancel = true;
+
+            /*else
+            {
+                //e.Cancel = false;
+            }#1#
+                
+        }*/
+        /// <summary>
+        ///  Form Closing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Menu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var filename = logIn.NickName + "Score.txt";
+            try
+            {
+                using (var stream = File.Open(filename, FileMode.Create))
+                {
+                    using (var bw = new BinaryWriter(stream, Encoding.UTF8, false))
+                    {
+                        bw.Write(logIn.drawPoints);
+                        bw.Write(logIn.playerPoints);
+                        bw.Write(logIn.computerPoints);
+
+                    }
+                }
+            }
+            catch (IOException error)
+            {
+                MessageBox.Show(error.Message + @"\n Cannot create file.");
+            }
+            Application.Exit();
+            
         }
     }
 }

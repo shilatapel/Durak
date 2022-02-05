@@ -59,7 +59,6 @@
     <Compile Include="Classes\Deck.cs" />
     <Compile Include="Classes\logIn.cs" />
     <Compile Include="Classes\Player.cs" />
-    <Compile Include="Classes\Score.cs" />
     <Compile Include="Classes\TextProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
