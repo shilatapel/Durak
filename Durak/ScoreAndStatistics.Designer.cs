@@ -61,6 +61,7 @@ namespace Durak
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblplayername = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.btnReset = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -78,7 +79,7 @@ namespace Durak
             this.btnOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOK.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.btnOK.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btnOK.Location = new System.Drawing.Point(145, 440);
+            this.btnOK.Location = new System.Drawing.Point(218, 440);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(82, 33);
             this.btnOK.TabIndex = 1;
@@ -91,7 +92,7 @@ namespace Durak
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Yehuda CLM", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.lblTitle.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.lblTitle.Location = new System.Drawing.Point(68, 9);
+            this.lblTitle.Location = new System.Drawing.Point(78, 9);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(232, 29);
             this.lblTitle.TabIndex = 2;
@@ -104,7 +105,7 @@ namespace Durak
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(378, 44);
+            this.panel1.Size = new System.Drawing.Size(388, 44);
             this.panel1.TabIndex = 2;
             // 
             // lbl1
@@ -401,11 +402,27 @@ namespace Durak
             this.panel8.Size = new System.Drawing.Size(229, 54);
             this.panel8.TabIndex = 20;
             // 
+            // btnReset
+            // 
+            this.btnReset.BackColor = System.Drawing.Color.Maroon;
+            this.btnReset.FlatAppearance.BorderSize = 0;
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.btnReset.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.btnReset.Location = new System.Drawing.Point(65, 440);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(82, 33);
+            this.btnReset.TabIndex = 21;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // ScoreAndStatistics
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(378, 500);
+            this.ClientSize = new System.Drawing.Size(388, 500);
+            this.Controls.Add(this.btnReset);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
@@ -474,5 +491,6 @@ namespace Durak
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label lblplayername;
         private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Button btnReset;
     }
 }

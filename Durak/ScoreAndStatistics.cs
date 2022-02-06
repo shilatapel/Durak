@@ -39,12 +39,31 @@ namespace Durak
                 lblPprWin.Text = "0%";
             }
         }
-
+        
         private void btnOK_Click(object sender, EventArgs e)
         {   
             
             this.Close();
            
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            logIn.drawPoints =0;
+            logIn.playerPoints = 0;
+            logIn.computerPoints = 0;
+            lblCdraw.Text = "0"; ;
+            lblClost.Text = "0"; ;
+            lblCwin.Text = "0"; ;
+            lblPdraw.Text = "0"; ;
+            lblPwin.Text = "0";
+            lblPlost.Text = "0";
+            lblCprWin.Text = "0%";
+            lblCprLost.Text = "0%";
+            lblPprLost.Text = "0%";
+            lblPprWin.Text = "0%";
+            this.Refresh();
+        
         }
     }
 }
