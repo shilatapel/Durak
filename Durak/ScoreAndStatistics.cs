@@ -9,7 +9,6 @@ namespace Durak
         public ScoreAndStatistics()
         {
             InitializeComponent();
-            //TODO Move in visual designer player's column. not enough wide if result 100% in any textboxes
             ShowStats();
         }
 
