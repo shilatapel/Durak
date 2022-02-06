@@ -303,9 +303,9 @@ namespace Durak
             // 
             this.panel4.Controls.Add(this.lblCprLost);
             this.panel4.Controls.Add(this.lblCprWin);
-            this.panel4.Location = new System.Drawing.Point(154, 315);
+            this.panel4.Location = new System.Drawing.Point(141, 315);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(63, 87);
+            this.panel4.Size = new System.Drawing.Size(82, 87);
             this.panel4.TabIndex = 15;
             // 
             // lblCprLost
@@ -323,9 +323,9 @@ namespace Durak
             // 
             this.panel3.Controls.Add(this.lblPprLost);
             this.panel3.Controls.Add(this.lblPprWin);
-            this.panel3.Location = new System.Drawing.Point(276, 315);
+            this.panel3.Location = new System.Drawing.Point(268, 315);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(56, 87);
+            this.panel3.Size = new System.Drawing.Size(86, 87);
             this.panel3.TabIndex = 16;
             // 
             // lblPprLost
@@ -365,9 +365,9 @@ namespace Durak
             this.panel6.Controls.Add(this.lblCwin);
             this.panel6.Controls.Add(this.lblCdraw);
             this.panel6.Controls.Add(this.lblClost);
-            this.panel6.Location = new System.Drawing.Point(154, 131);
+            this.panel6.Location = new System.Drawing.Point(141, 131);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(63, 162);
+            this.panel6.Size = new System.Drawing.Size(82, 162);
             this.panel6.TabIndex = 18;
             // 
             // panel7
@@ -375,9 +375,9 @@ namespace Durak
             this.panel7.Controls.Add(this.lblPwin);
             this.panel7.Controls.Add(this.lblPlost);
             this.panel7.Controls.Add(this.lblPdraw);
-            this.panel7.Location = new System.Drawing.Point(276, 138);
+            this.panel7.Location = new System.Drawing.Point(268, 131);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(56, 155);
+            this.panel7.Size = new System.Drawing.Size(86, 162);
             this.panel7.TabIndex = 19;
             // 
             // lblplayername
