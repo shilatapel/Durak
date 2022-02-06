@@ -710,6 +710,12 @@ namespace Durak
             { 
                 bool computerisAttcked;
                 bool playerisAttcked;
+
+                if (!File.Exists("saveGame.bin"))
+                    MessageBox.Show(@"No game saved!");
+
+
+
                 //List<Card> check = new List<Card>();    //only for test
                 FileStream fs = new FileStream("saveGame.bin", FileMode.Open); //open file to read 
                 BinaryFormatter bf = new BinaryFormatter();  //pointer that read from binary file
@@ -800,13 +806,7 @@ namespace Durak
                help.Show();
             }
         }
-        /*protected override void OnFormClosing(FormClosingEventArgs e)
-        {       
-          
-            if (MessageBox.Show("Are you sure you want to Exit?", "DURAK APP", MessageBoxButtons.YesNo) ==
-                DialogResult.No)
-                e.Cancel = true;      
-        }*/
+
         /// <summary>
         ///  Form Closing
         /// </summary>
@@ -826,6 +826,7 @@ namespace Durak
                 
         }
 
+        // Save Score
         private void SaveStatistics()
         {
             var filename = logIn.NickName + "Score.txt";
