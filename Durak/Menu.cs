@@ -764,7 +764,7 @@ namespace Durak
 
             catch (Exception err)
             {
-                MessageBox.Show(err.Message);
+                //MessageBox.Show(err.Message);
             }
 
         }
