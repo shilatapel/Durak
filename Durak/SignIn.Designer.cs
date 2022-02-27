@@ -131,7 +131,7 @@ namespace Durak
             this.BackColor = System.Drawing.Color.Lavender;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(730, 457);
+            this.ClientSize = new System.Drawing.Size(730, 419);
             this.Controls.Add(this.radioBtnMale);
             this.Controls.Add(this.radioBtnFemale);
             this.Controls.Add(this.btnSignIn);
