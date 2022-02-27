@@ -12,6 +12,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <DisableOutOfProcTaskHost>true</DisableOutOfProcTaskHost>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -22,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DisableOutOfProcTaskHost>true</DisableOutOfProcTaskHost>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DisableOutOfProcTaskHost>true</DisableOutOfProcTaskHost>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,7 +50,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="logIn.cs" />
+    <Compile Include="Classes\Card.cs" />
+    <Compile Include="Classes\Computer.cs" />
+    <Compile Include="Classes\CustomCardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Classes\Deal.cs" />
+    <Compile Include="Classes\Deck.cs" />
+    <Compile Include="Classes\logIn.cs" />
+    <Compile Include="Classes\Player.cs" />
+    <Compile Include="Classes\TextProgressBar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Classes\TriangleButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HelpGuide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelpGuide.Designer.cs">
+      <DependentUpon>HelpGuide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ScoreAndStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScoreAndStatistics.Designer.cs">
+      <DependentUpon>ScoreAndStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="SignIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,24 +102,28 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TextProgressBar.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Welcome.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Welcome.Designer.cs">
       <DependentUpon>Welcome.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpGuide.resx">
+      <DependentUpon>HelpGuide.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
+    <EmbeddedResource Include="ScoreAndStatistics.resx">
+      <DependentUpon>ScoreAndStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SignIn.resx">
       <DependentUpon>SignIn.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,6 +142,66 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Cards\back1.jpg" />
+    <Content Include="Resources\Cards\back2.jpg" />
+    <Content Include="Resources\Cards\back3.jpg" />
+    <Content Include="Resources\Cards\back4.jpg" />
+    <Content Include="Resources\Cards\back5.jpg" />
+    <Content Include="Resources\Cards\c10.png" />
+    <Content Include="Resources\Cards\c11.png" />
+    <Content Include="Resources\Cards\c12.png" />
+    <Content Include="Resources\Cards\c13.png" />
+    <Content Include="Resources\Cards\c14.png" />
+    <Content Include="Resources\Cards\c6.png" />
+    <Content Include="Resources\Cards\c7.png" />
+    <Content Include="Resources\Cards\c8.png" />
+    <Content Include="Resources\Cards\c9.png" />
+    <Content Include="Resources\Cards\d10.png" />
+    <Content Include="Resources\Cards\d11.png" />
+    <Content Include="Resources\Cards\d12.png" />
+    <Content Include="Resources\Cards\d13.png" />
+    <Content Include="Resources\Cards\d14.png" />
+    <Content Include="Resources\Cards\d6.png" />
+    <Content Include="Resources\Cards\d7.png" />
+    <Content Include="Resources\Cards\d8.png" />
+    <Content Include="Resources\Cards\d9.png" />
+    <Content Include="Resources\Cards\h10.png" />
+    <Content Include="Resources\Cards\h11.png" />
+    <Content Include="Resources\Cards\h12.png" />
+    <Content Include="Resources\Cards\h13.png" />
+    <Content Include="Resources\Cards\h14.png" />
+    <Content Include="Resources\Cards\h6.png" />
+    <Content Include="Resources\Cards\h7.png" />
+    <Content Include="Resources\Cards\h8.png" />
+    <Content Include="Resources\Cards\h9.png" />
+    <Content Include="Resources\Cards\s10.png" />
+    <Content Include="Resources\Cards\s11.png" />
+    <Content Include="Resources\Cards\s12.png" />
+    <Content Include="Resources\Cards\s13.png" />
+    <Content Include="Resources\Cards\s14.png" />
+    <Content Include="Resources\Cards\s6.png" />
+    <Content Include="Resources\Cards\s7.png" />
+    <Content Include="Resources\Cards\s8.png" />
+    <Content Include="Resources\Cards\s9.png" />
+    <Content Include="Resources\Logo\icon durak00.ico" />
+    <Content Include="Resources\Logo\logo durak רקע לבן (2).jpeg" />
+    <Content Include="Resources\Logo\logo.png" />
+    <Content Include="Resources\Logo\logoico.ico" />
+    <Content Include="Resources\Logo\logoicon.ico" />
+    <Content Include="Resources\Logo\logoTrans.png" />
+    <Content Include="Resources\Logo\logowhite.jpeg" />
+    <Content Include="Resources\Logo\לוגו durak00.png" />
+    <Content Include="Resources\Logo\לוגו durak16x16.ico" />
+    <Content Include="Resources\Logo\לוגו durak32x32.ico" />
+    <Content Include="Resources\Logo\לוגו durak32x32.svg" />
+    <Content Include="Resources\table0.jpg" />
+    <Content Include="Resources\table1.jpg" />
+    <Content Include="Resources\table2.jpg" />
+    <Content Include="Resources\table3.jpg" />
+    <Content Include="Resources\table4.jpg" />
+    <Content Include="Resources\table5.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

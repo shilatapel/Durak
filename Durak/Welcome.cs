@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Durak
@@ -17,6 +10,7 @@ namespace Durak
             InitializeComponent();
         }
 
+        //func Show Welcome screen with image and progress bar
         private void Welcome_Load(object sender, EventArgs e)
         {
             prgBar.Value = 0;
@@ -24,6 +18,7 @@ namespace Durak
             timer1.Enabled = true;
         }
 
+        //show title in progress bar according the timer
         private void timer1_Tick(object sender, EventArgs e)
         {
             prgBar.Visible = true;
@@ -31,30 +26,24 @@ namespace Durak
             if (prgBar.Value <= 35)
             {
                 prgBar.CustomText = "Initializing...........";
-
             }
             else if (prgBar.Value <= 55)
             {
                 prgBar.CustomText = "Loading .......";
-
             }
             else if (prgBar.Value <= 80)
             {
                 prgBar.CustomText = "Getting Ready To Use...";
-
             }
             else
             {
                 if (prgBar.Value == 100)
                 {
-
                     timer1.Enabled = false;
                     prgBar.Visible = false;
-                    this.DialogResult = DialogResult.OK;
+                    DialogResult = DialogResult.OK;
                 }
-
             }
         }
-
     }
 }

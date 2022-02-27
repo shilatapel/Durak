@@ -5,6 +5,11 @@
       "taskLabel": "task-README",
       "appliesTo": "README.md",
       "type": "launch"
+    },
+    {
+      "taskLabel": "задача-Resources",
+      "appliesTo": "Durak/Properties/Resources.resx",
+      "type": "launch"
     }
   ]
 }
